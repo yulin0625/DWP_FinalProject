@@ -32,24 +32,10 @@
     if ( $total_records > 0 ) {
         // 成功登入, 指定Session變數
         $_SESSION["login_session"] = true;
-        $_SESSION["MemberID"] = $row[0];
-        $_SESSION["password"] = $row[1];
-        $_SESSION["name"] = $row[2];
-        $_SESSION["DateOfBirth"] = $row[3];
-        $_SESSION["Gender"] = $row[4];
-        $_SESSION["Address"] = $row[5];
-        $_SESSION["Tel"] = $row[6];
-        $_SESSION["EduBG"] = $row[7];
-        $_SESSION["Experience"] = $row[8];
-        $_SESSION["Email"] = $row[9];
+        $_SESSION["password"] = $row[0];
+        $_SESSION["MemberID"] = $row[1];
 
-        header("Location: display2.php");  
-        // if($_SESSION["MemberID"] == "iimbp" && $_SESSION["password"] == "1234") {
-        //     header("Location: administrator.php?article=1");
-        // }
-        // else{
-        //     header("Location: display2.php");  
-        // }
+        header("Location: home.php"); 
         exit; 
        }
 

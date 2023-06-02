@@ -6,52 +6,96 @@
 	<title>Log In</title>
 <style>
 	body {
-		background-color: "#FDFAEF";
+		background-image: url(img/loginbg.jpg);
+		background-size: cover;
 	}
 
-	#div1{
-		font-family:serif; font-weight: bold;
-		 font-size:85px;background-color: #dfbfb1; width: 100%;position: absolute;
-		 right: 0; left: 0; top: 0;height: 22%;
-		  padding-top: 25px;padding-bottom: 15px;
+	h1 {
+		top: 20%;
+		left: 25%;
+		text-align: center;
+		width: 100%;
+		margin-top: 0;
 	}
 
-	table {
-		border-collapse:separate; 
-		border-spacing:40px 10px;
-		font-family:monospace; 
-		position: fixed; top: 270px;left: 410px;
-		border-style: hidden;color: #8E8C8B;
+	div {
+		position: absolute;
+		top:20%;
+		left: 20%;
+		font-size: 30px;
+		background-color: rgba(221, 248, 252, 0.853);
+		width: 30%;
+		height: 40%;
+		padding: 5% 15%;
 	}
 
-	td {
-		font-size: 20px;
+	.inputtext {
+		height: 30px;
+		width: 200px;
+		border-radius: 20px;
+		border: 2px solid rgb(158, 173, 183);
+		font-size: 18px;
 	}
 
-	.input1 {
-		border-top-style:hidden;border-left-style: hidden; border-right-style: hidden;border-bottom-style: dashed;
+	table{
+		width: 100%;
+		height: 100%;
+		/* background-color: aquamarine; */
 	}
 
-	.input2 {
-		font-family:monospace ;position: fixed;top: 440px;left: 580px; width:120px;height:40px;border:none;background-color: #dfbfb1;border-radius: 50px;
+	.text_col {
+		text-align: right;
 	}
+
+	td:nth-child(2) {
+		text-align: center;
+	}
+
+	.but_col {
+		text-align: center;
+		/* background-color: antiquewhite; */
+	}
+
+	#but1 {
+		margin-top: 40px;
+	}
+
+	.but {
+		margin-top: 10px;
+		height: 40px;
+		font-size: 18px;
+		width: 150px;
+		border-radius: 30px;
+		border:2px solid rgb(87, 123, 128);
+		background-color: rgb(90, 173, 173);
+	}
+
 </style>
 </head>
 <body>
-	<div id="div1" align="center">Log In</div>
-	<form name="login" action="login.php" method="post">
-		<table>
-			<tr>
-				<td align="center">MemberID</td>
-				<td align="center">Password</td>
-			</tr>
-			<tr>
-				<td><input type="text" class="input1" name="MemberID"></td>
-				<td><input type="password" class="input1" name="password"></td>
-			</tr>
-		</table>
-		<div align="center"><input type="submit"  class="input2" name="login" value="Log In"></div>
-		<div align="center"><input type="button"  class="input2"  name="register" value="Register" onclick="location.href='register.html'" ></div>
-	</form>
+	
+	<div>
+		<h1>Log In</h1>
+		<form name="login" action="login.php" method="post">
+			<table>
+				<tr>
+					<td class="text_col">Name:</td>
+					<td><input class="inputtext" type="text" name="MemberID"></td>
+				</tr>
+				<tr>
+					<td class="text_col">Password:</td>
+					<td><input class="inputtext" type="password"  name="password"></td>
+				</tr>
+				<tr class="but_col">
+					<td colspan="2" ><input class="but" id="but1" type="submit" name="login" value="Log In"></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="but_col"><input class="but" type="button" name="register" value="Register" onclick="location.href='register.html'" ></td>
+				</tr>
+			</table>
+			
+		</form>
+	</div>
+	
 </body>
 </html>
