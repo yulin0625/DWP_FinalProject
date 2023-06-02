@@ -1,0 +1,71 @@
+body {
+    width: 100%;
+    margin: 0 auto;
+    background-image: url(./img/home_background.jpg);
+    background-size: cover;
+}
+
+/* 頂部控制列 */
+#controlBar {
+    position: absolute;
+    width: 98%;
+    height: 10%;
+    padding: 1% 1% 0 1%;
+}
+
+#pause img {
+    height: 50px;
+    width: 50px;
+}
+
+#pause {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+
+#desk {
+    position: absolute;
+    bottom: 0px;
+    background-color: burlywood;
+    height: 45%;
+    width: 75%;
+}
+
+.deskArea {
+    display: inline-block;
+    /* padding-left: 15px; */
+    width: 150px;
+}
+
+.ingredient_top {
+    max-width: 130px;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+}
+
+.ingredient_bottom {
+    max-width: 130px;
+    position: absolute;
+    top: 75%;
+    transform: translateY(-50%);
+}
+
+#desk_4 {
+    float: right;
+    width: 230px;
+}
+
+#hamburgerBun, #meat {
+    max-width: 220px;
+}
+
+#fryingTable {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 45%;
+    width: 25%;
+    background-color: gray;
+}
