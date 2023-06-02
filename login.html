@@ -4,22 +4,54 @@
 	<meta charset="utf-8">
 	<link rel="icon" sizes="192x192" href="https://img.icons8.com/pastel-glyph/2x/person-male--v2.png">
 	<title>Log In</title>
+<style>
+	body {
+		background-color: "#FDFAEF";
+	}
+
+	#div1{
+		font-family:serif; font-weight: bold;
+		 font-size:85px;background-color: #dfbfb1; width: 100%;position: absolute;
+		 right: 0; left: 0; top: 0;height: 22%;
+		  padding-top: 25px;padding-bottom: 15px;
+	}
+
+	table {
+		border-collapse:separate; 
+		border-spacing:40px 10px;
+		font-family:monospace; 
+		position: fixed; top: 270px;left: 410px;
+		border-style: hidden;color: #8E8C8B;
+	}
+
+	td {
+		font-size: 20px;
+	}
+
+	.input1 {
+		border-top-style:hidden;border-left-style: hidden; border-right-style: hidden;border-bottom-style: dashed;
+	}
+
+	.input2 {
+		font-family:monospace ;position: fixed;top: 440px;left: 580px; width:120px;height:40px;border:none;background-color: #dfbfb1;border-radius: 50px;
+	}
+</style>
 </head>
-<body bgcolor="#FDFAEF">
-	<div style="font-family:serif; font-weight: bold; font-size:85px;background-color: #dfbfb1; width: 100%;position: absolute; right: 0; left: 0; top: 0;height: 22%; padding-top: 25px;padding-bottom: 15px;" align="center">Log In</div>
+<body>
+	<div id="div1" align="center">Log In</div>
 	<form name="login" action="login.php" method="post">
-		<table  style="border-collapse:separate; border-spacing:40px 10px;font-family:monospace; position: fixed; top: 270px;left: 410px;border-style: hidden;color: #8E8C8B;">
+		<table>
 			<tr>
-				<td align="center" style="font-size: 20px;">MemberID</td>
-				<td align="center" style="font-size: 20px;">Password</td>
+				<td align="center">MemberID</td>
+				<td align="center">Password</td>
 			</tr>
 			<tr>
-				<td><input type="text" name="MemberID" style="border-top-style:hidden;border-left-style: hidden; border-right-style: hidden;border-bottom-style: dashed;"></td>
-				<td><input type="password" name="password" style="border-top-style:hidden;border-left-style: hidden; border-right-style: hidden;border-bottom-style: dashed;"></td>
+				<td><input type="text" class="input1" name="MemberID"></td>
+				<td><input type="password" class="input1" name="password"></td>
 			</tr>
 		</table>
-		<div align="center"><input type="submit" name="login" value="Log In" style="font-family:monospace ; position: fixed;top: 390px;left: 580px; width:120px;height:40px;border:none;background-color: #dfbfb1;border-radius: 50px;"></div>
-		<div align="center"><input type="button" name="register" style="font-family:monospace ;position: fixed;top: 440px;left: 580px; width:120px;height:40px;border:none;background-color: #dfbfb1;border-radius: 50px; " value="Register" onclick="location.href='register.html'" ></div>
+		<div align="center"><input type="submit"  class="input2" name="login" value="Log In"></div>
+		<div align="center"><input type="button"  class="input2"  name="register" value="Register" onclick="location.href='register.html'" ></div>
 	</form>
 </body>
 </html>

@@ -12,7 +12,7 @@
     if ($MemberID != "" && $password != "")
     {
         // 建立MySQL的資料庫連接 
-        $link = mysqli_connect("localhost","root","","enterprisemap")
+        $link = mysqli_connect("localhost","root","","webproject_cookinggame")
             or die("無法開啟MySQL資料庫連接!<br/>");
     }
 
@@ -20,7 +20,7 @@
     mysqli_query($link, 'SET NAMES utf8');
 
     // 建立SQL指令字串
-    $sql = "SELECT * FROM register WHERE password='";
+    $sql = "SELECT * FROM player WHERE password='";
     $sql.= $password."' AND MemberID='".$MemberID."'";
 
     // 執行SQL查詢
@@ -43,12 +43,13 @@
         $_SESSION["Experience"] = $row[8];
         $_SESSION["Email"] = $row[9];
 
-         if($_SESSION["MemberID"] == "iimbp" && $_SESSION["password"] == "1234") {
-            header("Location: administrator.php?article=1");
-        }
-        else{
-            header("Location: display2.php");  
-        }
+        header("Location: display2.php");  
+        // if($_SESSION["MemberID"] == "iimbp" && $_SESSION["password"] == "1234") {
+        //     header("Location: administrator.php?article=1");
+        // }
+        // else{
+        //     header("Location: display2.php");  
+        // }
         exit; 
        }
 
