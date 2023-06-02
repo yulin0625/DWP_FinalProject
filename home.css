@@ -1,0 +1,17 @@
+body {
+    background-image: url(./img/home_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#playGameBtn {
+    /* 垂直對齊於65% */
+    position: absolute;
+    top: 65%;
+    height: 80px;
+    transform: translateY(-50%);
+    /* 水平置中 */
+    left: 50%;
+    width: 100px;
+    transform: translateX(-50%);
+}
