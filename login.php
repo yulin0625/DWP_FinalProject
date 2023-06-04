@@ -34,6 +34,7 @@
         $_SESSION["login_session"] = true;
         $_SESSION["password"] = $row[0];
         $_SESSION["MemberID"] = $row[1];
+        $_SESSION["money"] = $row[2];
 
         header("Location: home.php"); 
         exit; 
