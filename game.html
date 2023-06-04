@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="game.css">
+    <script src="./game.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -17,29 +22,47 @@
     <div id="desk"> 
         <!-- 起司、洋蔥 -->
         <div id="desk_1" class="deskArea">
-            <img src="./img/cheese.png" alt="cheese" id="cheese" class="ingredient_top">
-            <img src="./img/onion.png" alt="onion" id="onion" class="ingredient_bottom">
+            <img src="./img/cheese.png" alt="cheese" id="cheese" class="ingredient_top" onclick="addIngredient('cheese')">
+            <img src="./img/onion.png" alt="onion" id="onion" class="ingredient_bottom" onclick="addIngredient('onion')">
         </div>
         <!-- 番茄、生菜 -->
         <div id="desk_2" class="deskArea">
-            <img src="./img/tomato.png" alt="tomato" id="tomato" class="ingredient_top">
-            <img src="./img/lettuce.png" alt="lettuce" id="lettuce" class="ingredient_bottom">
+            <img src="./img/tomato.png" alt="tomato" id="tomato" class="ingredient_top" onclick="addIngredient('tomato')">
+            <img src="./img/lettuce.png" alt="lettuce" id="lettuce" class="ingredient_bottom" onclick="addIngredient('lettuce')">
         </div>
         <!-- 盤子 -->
         <div id="desk_3" class="deskArea">
-            <img src="./img/plate.png" alt="plate_1" id="plate_1" class="plate">
-            <img src="./img/plate.png" alt="plate_2" id="plate_2" class="plate">
+            <img src="./img/plate.png" alt="plate_1" id="plate_1" class="plate" ondblclick="moveBurgerToTrash(1)">
+            <img src="./img/plate.png" alt="plate_2" id="plate_2" class="plate" ondblclick="moveBurgerToTrash(2)">
         </div>
         <!-- 漢堡麵包、生肉 -->
         <div id="desk_4" class="deskArea">
-            <img src="./img/hamburgerBun.png" alt="hamburgerBun" id="hamburgerBun" class="ingredient_top">
-            <img src="./img/raw_meat.png" alt="meat" id="meat" class="ingredient_bottom">
+            <img src="./img/hamburgerBun.png" alt="hamburgerBun" id="hamburgerBun" class="ingredient_top" onclick="addIngredient('hambergerBun')">
+            <img src="./img/raw_meat.png" alt="rawMeat" id="rawMeat" class="ingredient_bottom" onclick="addIngredient('rawMeat')">
         </div>
     </div>
     <!-- 煎台 -->
-    <div id="fryingTable">  
-        <div id="fryingTable_1"></div>
-        <div id="fryingTable_2"></div>
+    <div id="fryingTable">
+        <div id="fryingTable_left" class="fryingTableArea">
+            <div id="fryingTable_1">
+                <img src="" id="meat_1" class="meat_top" onclick="addIngredient('meat_1')">
+                <!-- 進度條 -->
+                <!-- <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: 50%" aria-valuenow="25"></div>
+                </div> -->
+            </div>
+            <div id="fryingTable_2">
+                <img src="" id="meat_2" class="meat_bottom" onclick="addIngredient('meat_2')">
+            </div>
+        </div>
+
+        <div id="fryingTable_right" class="fryingTableArea">
+            <div id="fryingTable_3">
+                <img src="" id="meat_3" class="meat_top" onclick="addIngredient('meat_3')">
+            </div>
+            <div id="fryingTable_4">
+                <img src="" id="meat_4" class="meat_bottom" onclick="addIngredient('meat_4')">
+        </div>
     </div>
 </body>
 </html>
