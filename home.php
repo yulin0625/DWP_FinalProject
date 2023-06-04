@@ -7,12 +7,11 @@
 <head>
   <meta charset="UTF-8">
   <title>HOME</title>
-  <link rel="icon" sizes="192x192" href="https://image.flaticon.com/icons/png/512/4020/4020286.png">
   <link rel="stylesheet" href="home.css">
+  <script src="home.js"></script>
   <style>
     #test {
       background-color: rgb(73, 65, 40);
-
       padding: 15px 15px 5px 15px;
       float: right;
       position: fixed;
@@ -22,6 +21,7 @@
       border-radius: 20px;
       text-align: center;
       /* height:400px; */
+      display: none;
     }
 
     #test h1 {
@@ -222,7 +222,6 @@
         margin:2px 15px 0 5px;
         line-height:35px;
         font-size: 20px;
-
     }
   </style>
 </head>
@@ -231,21 +230,21 @@
   <div id="name_box"><?php echo $_SESSION["MemberID"] ?></div>
   <div id="m_box">$ <?php echo $_SESSION["money"] ?></div>
   <button id="playGameBtn" onclick="playGame()">START!</button>
-  <!-- <a href="./game.html" id="playGameBtn">開始遊戲</a> -->
   <button id="LOGOUT" onclick="location.href='index.html'" >LOG OUT</button>
   <button class="but" id="leaderboard" onclick="openLeaderboard()">RANK</button>
   <button class="but" id="shop" onclick="openShop()">STORE</button>
-  <div id="test"><span>x</span><h1>Leaderboard</h1>
-  
-  <div class="head">
-    <table>
-      <tr>
-        <th>RANK</th>
-        <th>NAME</th>
-        <th>SCORE</th>
-      </tr>
-    </table>
-  </div>
+  <div id="test">
+    <span onclick="closeLeaderboard()">x</span>
+    <h1>Leaderboard</h1>
+    <div class="head">
+      <table>
+        <tr>
+          <th>RANK</th>
+          <th>NAME</th>
+          <th>SCORE</th>
+        </tr>
+      </table>
+    </div>
 <?php
   $sql = "SELECT *
   FROM score
@@ -253,7 +252,7 @@
 
   $x =1 ;
 
-  $con = mysqli_connect("localhost","root","","webproject_cookinggame");
+  $con = mysqli_connect("localhost","root","","webproject");
   if (empty($con)) {
     print mysqli_error($con);
     die("資料庫連接失敗！");

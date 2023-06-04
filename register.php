@@ -5,7 +5,7 @@
 	    $MemberID = $_POST["MemberID"];
     if ( isset($_POST["password"]) )
 	    $password = $_POST["password"];
-    $link = mysqli_connect("localhost","root","","webproject_cookinggame")
+    $link = mysqli_connect("localhost","root","","webproject")
             or die("無法開啟MySQL資料庫連接!<br/>");
 
     //送出UTF8編碼的MySQL指令
@@ -20,7 +20,7 @@
 
   $sql = "INSERT INTO player (MemberID, password)
   VALUES ('$MemberID', '$password')";
-
+  
   if ($link->query($sql) === TRUE) {
     header("Location: success.html");
   } 

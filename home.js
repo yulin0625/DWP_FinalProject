@@ -3,9 +3,13 @@ function playGame(){
 }
 
 function openLeaderboard(){
-
+    document.getElementById("test").style.display= "block";
 }
 
-function openShop(){
-
+function closeLeaderboard(){
+    document.getElementById("test").style.display= "none";
 }
+
+// function openShop(){
+
+// }

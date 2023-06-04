@@ -12,7 +12,7 @@
     if ($MemberID != "" && $password != "")
     {
         // 建立MySQL的資料庫連接 
-        $link = mysqli_connect("localhost","root","","webproject_cookinggame")
+        $link = mysqli_connect("localhost","root","","webproject")
             or die("無法開啟MySQL資料庫連接!<br/>");
     }
 
@@ -32,19 +32,19 @@
     if ( $total_records > 0 ) {
         // 成功登入, 指定Session變數
         $_SESSION["login_session"] = true;
-        $_SESSION["password"] = $row[0];
-        $_SESSION["MemberID"] = $row[1];
+        $_SESSION["MemberID"] = $row[0];
+        $_SESSION["password"] = $row[1];
         $_SESSION["money"] = $row[2];
 
         header("Location: home.php"); 
         exit; 
-       }
+    }
 
-       else {  // 登入失敗
-          echo "<center><font color='red'>";
-          echo "使用者名稱或密碼錯誤!<br/>";
-          echo "</font>";
-          $_SESSION["login_session"] = false;
-       }
-       mysqli_close($link);  // 關閉資料庫連接
+    else {  // 登入失敗
+        echo "<center><font color='red'>";
+        echo "使用者名稱或密碼錯誤!<br/>";
+        echo "</font>";
+        $_SESSION["login_session"] = false;
+    }
+    mysqli_close($link);  // 關閉資料庫連接
 ?>
