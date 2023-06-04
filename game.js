@@ -7,7 +7,8 @@ const burgerStatus = [0, 0];
 // 煎台
 const maxMeatNumber = 4;
 const meatStatus = [0, 0, 0, 0]; // 0:no meat, 1:raw, 2:cooked, 3:overcook
-
+var timeLeft;
+var game_timer;
 var m1_timer;
 var m2_timer;
 var m3_timer;
@@ -202,3 +203,23 @@ function moveBurgerToTrash(plateID){
     document.getElementById("plate_"+plateID).setAttribute("src", "./img/plate.png");
     burgerStatus[plateID-1] = 0;
 }
+
+function countDown(){
+    if(timeLeft>0){
+        --timeLeft;
+        let min = Math.floor(timeLeft / 60);
+        let sec_1 = Math.floor(timeLeft % 60 / 10);
+        let sec_2 = timeLeft % 60 % 10;
+        document.getElementById("timeLeft").innerHTML = `${min}:${sec_1}${sec_2}`;
+        // console.log(`${min}:${sec_1}${sec_2}`);
+    }
+    else{
+        // todo:gameover
+    }
+}
+
+window.onload = function(){
+    timeLeft = 2*60; // 遊戲時間2min
+
+    game_timer = setInterval(countDown, 1000);
+};
