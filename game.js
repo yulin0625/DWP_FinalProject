@@ -102,22 +102,64 @@ function addIngredient(ingredient){
                 // 盤子內是burger_m
                 if(burgerStatus[i] == 2){
                     document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_c.png");
-                    burgerStatus[i] = 3;
+                    burgerStatus[i] = 3; // burger_m_c
                     break;
                 }
                 // 盤子內是burger_m_o
                 if(burgerStatus[i] == 4){
                     document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_c_o.png");
-                    burgerStatus[i] = 5;
+                    burgerStatus[i] = 5; // burger_m_c_o
                     break;
                 }
             }
             break;
         case "onion":
+            for(let i=0; i < maxBurgerNumber; ++i){
+                // 盤子內是burger_m
+                if(burgerStatus[i] == 2){
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_o.png");
+                    burgerStatus[i] = 4; // burger_m_o
+                    break;
+                }
+                // 盤子內是burger_m_c
+                if(burgerStatus[i] == 3){
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_c_o.png");
+                    burgerStatus[i] = 5; // burger_m_c_o
+                    break;
+                }
+            }
             break;
         case "tomato":
+            for(let i=0; i < maxBurgerNumber; ++i){
+                // 盤子內是burger_m
+                if(burgerStatus[i] == 2){
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_t.png");
+                    burgerStatus[i] = 6; // buger_m_t
+                    break;
+                }
+                // 盤子內是burger_m_l
+                if(burgerStatus[i] == 7){
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_l_t.png");
+                    burgerStatus[i] = 8; // burger_m_l_t
+                    break;
+                }
+            }
             break;
         case "lettuce":
+            for(let i=0; i < maxBurgerNumber; ++i){
+                // 盤子內是burger_m
+                if(burgerStatus[i] == 2){
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_l.png");
+                    burgerStatus[i] = 7; // buger_m_l
+                    break;
+                }
+                // 盤子內是burger_m_t
+                if(burgerStatus[i] == 6){
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_l_t.png");
+                    burgerStatus[i] = 8; // burger_m_l_t
+                    break;
+                }
+            }
             break;
     }
 }
