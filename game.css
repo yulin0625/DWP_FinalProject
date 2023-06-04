@@ -1,153 +1,187 @@
 body {
-    width: 100%;
-    margin: 0 auto;
-    background-image: url(./img/home_background.jpg);
-    background-size: cover;
+  width: 100%;
+  margin: 0 auto;
+  background-image: url(./img/home_background.jpg);
+  background-size: cover;
 }
 
 /* 頂部控制列 */
 #controlBar {
-    position: absolute;
-    width: 98%;
-    height: 10%;
-    padding: 1% 1% 0 1%;
+  position: absolute;
+  width: 98%;
+  height: 10%;
+  padding: 1% 1% 0 1%;
 }
 
 #pause img {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 }
 
 #pause {
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
 }
 
 #countDown {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgb(64, 100, 162);
-    width: 230px;
-    height: 80px;
-    text-align: left;
-    padding-left: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(64, 100, 162);
+  width: 230px;
+  height: 80px;
+  text-align: left;
+  padding-left: 25px;
 }
 
 #timeLeft {
-    display: inline-block;
-    font-size: 55px;
-    font-weight: 800;
-    color: white;
-    margin: 0;
+  display: inline-block;
+  font-size: 55px;
+  font-weight: 800;
+  color: white;
+  margin: 0;
 }
 
 #hourglass {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 60px;
-    margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60px;
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+    0% {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+    }
+    25% {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+    }
+    50% {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(180deg);
+    }
+    75% {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(270deg);
+    }
+    100% {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(360deg);
+    }
 }
 
 #desk {
-    position: absolute;
-    bottom: 0px;
-    background-color: burlywood;
-    height: 45%;
-    width: 75%;
+  position: absolute;
+  bottom: 0px;
+  background-color: burlywood;
+  height: 45%;
+  width: 75%;
 }
 
 .deskArea {
-    display: inline-block;
-    width: 150px;
-    height: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 100%;
 }
 
 .ingredient_top {
-    max-width: 130px;
-    position: absolute;
-    top: 25%;
-    transform: translateY(-50%);
+  max-width: 130px;
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
 }
 
 .ingredient_bottom {
-    max-width: 130px;
-    position: absolute;
-    top: 75%;
-    transform: translateY(-50%);
+  max-width: 130px;
+  position: absolute;
+  top: 75%;
+  transform: translateY(-50%);
 }
 
 #desk_3 {
-    width: 500px;
-    height: 100%;
-    position: relative;
+  width: 500px;
+  height: 100%;
+  position: relative;
 }
 
 .plate {
-    max-width: 200px;
-    position: absolute;
-    top: 15%;
-    transform: translateY(-50%);
+  max-width: 200px;
+  position: absolute;
+  top: 15%;
+  transform: translateY(-50%);
 }
 
 #plate_1 {
-    position: absolute;
-    left: 25%;
-    transform: translateX(-50%);
+  position: absolute;
+  left: 25%;
+  transform: translateX(-50%);
 }
 
 #plate_2 {
-    position: absolute;
-    left: 75%;
-    transform: translateX(-50%);
+  position: absolute;
+  left: 75%;
+  transform: translateX(-50%);
 }
 
 #desk_4 {
-    width: 220px;
+  width: 220px;
 }
 
-#hamburgerBun, #rawMeat {
-    max-width: 220px;
+#hamburgerBun,
+#rawMeat {
+  max-width: 220px;
 }
 
 #fryingTable {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 45%;
-    width: 25%;
-    background-color: gray;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  height: 45%;
+  width: 25%;
+  background-color: gray;
 }
 
 .fryingTableArea {
-    display: inline-block;
-    padding-left: 7%;
-    width: 45%;
-    height: 100%;
+  display: inline-block;
+  padding-left: 7%;
+  width: 45%;
+  height: 100%;
 }
 
-#fryingTable_1, #fryingTable_2, #fryingTable_3, #fryingTable_4 {
-    /* position: absolute; */
-    position: relative;
-    display: inline-block;
-    height: 50%;
-    width: 100%;
+#fryingTable_1,
+#fryingTable_2,
+#fryingTable_3,
+#fryingTable_4 {
+  /* position: absolute; */
+  position: relative;
+  display: inline-block;
+  height: 50%;
+  width: 100%;
 }
 
 .meat_top {
-    max-width: 100px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+  max-width: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 
 .meat_bottom {
-    max-width: 100px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+  max-width: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
