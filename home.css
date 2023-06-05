@@ -27,7 +27,7 @@ body {
     border-radius: 20px;
     text-align: center;
     /* height:400px; */
-    /* display: none; */
+    display: none;
     height:475px;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -137,6 +137,7 @@ body {
       display: inline-block;
       margin-right: 10px;
       font-family:monospace ;
+      margin:10px 20px;
   }
 
   #m_box {
@@ -256,10 +257,13 @@ body {
       top:90px;
       border: 6px solid rgb(252, 224, 140);
       border-radius: 20px;
+      /* display: none; */
   }
   #store h1 {
       text-align: center;
       font-size: 40px;
+      height: 50px;
+      line-height: 50px;
       margin: 15px 0;
       color: rgb(255, 249, 240);
   }
@@ -287,19 +291,34 @@ body {
       left: 210px;
       font-size: 30px;
       margin-top: 85px;
-  }
-
-  .inputnumber{
-      width: 30px;
-  }
-
-  .item_number {
+    }
+    
+    .itemnum {
       position: absolute;
-      left: 210px;
-      font-size: 30px;
-      margin-top: 130px;
-  }
+      background-color: rgb(207, 34, 4);
+      width: 35px;
+      height: 35px;
+      border-radius: 30px;
+      text-align: center;
+      color: rgb(255, 255, 255);
+      font-family:monospace ;
+      line-height: 35px;
+      font-size: 20px;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
 
+    .inputnumber{
+        width: 30px;
+    }
+    
+    .item_number {
+        position: absolute;
+        left: 210px;
+        font-size: 30px;
+        margin-top: 130px;
+    }
+    
   .item_number form {
       display: inline-block;
   }
@@ -390,3 +409,4 @@ body {
   .invis{
     display: none;
   }
+
