@@ -1,0 +1,111 @@
+<?php  
+  session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HOME</title>
+  <link rel="stylesheet" href="home.css">
+  <script src="home.js"></script>
+</head>
+
+<body>
+  <div id="name_box"></div>
+  <div id="m_box"></div>
+  <button id="playGameBtn" onclick="playGame()">START!</button>
+  <button id="LOGOUT" onclick="location.href='index.html'" >LOG OUT</button>
+  <button class="but" id="leaderboard" onclick="openLeaderboard()">RANK</button>
+  <button class="but" id="shop" onclick="openShop()">STORE</button>
+
+  <div id="store">
+    <h1>STORE</h1>
+    <div class="item">
+        <img src="img/item1.png">
+        <h3>Reduce cooking time</h3>
+        <h2>$ 500</h2>
+        <div class="item_number">
+            <button onclick="changeNum(1)">◀</button>
+            <form method="post">
+                <input id="num1" class="inputnumber" type="text" name="item1" value="1">
+            </form>
+            <button onclick="changeNum(2)">▶</button>
+            <button class="buybut" onclick="buyitem(1)">BUY</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="img/item2.png">
+        <h3>Food won't be bured</h3>
+        <h2>$ 500</h2>
+        <div class="item_number">
+            <button onclick="changeNum(3)">◀</button>
+            <form method="post">
+                <input id="num2" class="inputnumber" type="text" name="item1" value="1">
+            </form>
+            <button onclick="changeNum(4)">▶</button>
+            <button class="buybut" onclick="buyitem(2)">BUY</button>
+        </div>
+    </div>
+    <div id="check">
+        <p>Total Amount:</p>
+        <p>$<span id="check_money"></span></p>
+        <button id="ok_but">OK</button> <button id="can_but">CANCEL</button>
+    </div>
+  </div>
+
+  <div id="test">
+    <span onclick="closeLeaderboard()">x</span>
+    <h1>Leaderboard</h1>
+    <div class="head">
+      <table>
+        <tr>
+          <th>RANK</th>
+          <th>NAME</th>
+          <th>SCORE</th>
+        </tr>
+      </table>
+    </div>
+<?php
+  $sql = "SELECT *
+  FROM score
+  ORDER BY MemberID DESC";
+
+  $x =1 ;
+
+  $con = mysqli_connect("localhost","root","","webproject");
+  if (empty($con)) {
+    print mysqli_error($con);
+    die("資料庫連接失敗！");
+    exit;
+  }
+
+  // mysqli_query($con, "SET NAMES 'UTF-8'");
+
+  $result = mysqli_query($con, $sql);
+  while ($row = mysqli_fetch_array($result)){?>
+    <div class="rank">
+      <table>
+        <tr>
+          <td><?php echo $x ?> </td>
+          <td><?php echo $row['MemberID']; ?> </td>
+          <td><?php echo $row['score']; ?></td>
+        </tr>
+      </table>
+    </div>
+  <?php $x = $x+1;
+  }
+  
+  while($x<6){?>
+    <div class="empty">
+    </div>
+
+  <?php
+  $x+=1;
+  }
+  ?>
+    
+  </div>
+
+</body>
+</html>
