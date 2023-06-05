@@ -9,7 +9,7 @@
   <title>HOME</title>
   <link rel="stylesheet" href="home.css">
   <script src="home.js"></script>
-  <style>
+  <!-- <style>
     #test {
       background-color: rgb(73, 65, 40);
       padding: 15px 15px 5px 15px;
@@ -31,12 +31,17 @@
       margin:3px 0 10px 0;
     }
 
-    #test span {
+    #test button {
       position: absolute;
       right:20px;
-      font-size:25px;
+      font-size:20px;
       font-weight:bold;
       font-family:monospace;
+      height: 25px;
+      width:25px;
+      line-height:19px;
+      border-radius:10px;
+      background-color: gray;
     }
 
     table {
@@ -223,7 +228,98 @@
         line-height:35px;
         font-size: 20px;
     }
-  </style>
+
+    
+    #store {
+        height: 540px;
+        width: 35%;
+        background-color: rgb(144, 107, 60);
+        position: absolute;
+        left: 30px;
+        top:90px;
+        border: 6px solid rgb(252, 224, 140);
+        border-radius: 20px;
+        display: none;
+    }
+    #store h1 {
+        text-align: center;
+        font-size: 40px;
+        margin: 15px 0;
+        color: rgb(255, 249, 240);
+    }
+    #store img{
+        height: 150px;
+        background-color: aliceblue;
+        border-radius: 30px;
+        margin: 30px;
+        position: absolute;
+    }
+    .item {
+        height:210px;
+        background-color: rgb(176, 158, 135);
+        margin-bottom: 20px;
+    }
+    .item h3{
+        position: absolute;
+        left: 210px;
+        font-size: 25px;
+        margin-top: 40px;
+    }
+
+    .item h2{
+        position: absolute;
+        left: 210px;
+        font-size: 30px;
+        margin-top: 85px;
+    }
+
+    .inputnumber{
+        width: 30px;
+    }
+
+    .item_number {
+        position: absolute;
+        left: 210px;
+        font-size: 30px;
+        margin-top: 130px;
+    }
+
+    .item_number form {
+        display: inline-block;
+    }
+
+    .item_number button {
+        height:30px;
+    }
+
+    .item_number input {
+        height:24px;
+    }
+
+    .item_number input {
+        height:24px;
+    }
+
+    .buybut {
+        background-color: rgb(247, 95, 57);
+        width: 100px;
+        margin-left: 20px;
+    }
+
+    #store #close_but {
+      position: absolute;
+      right:10px;
+      top:10px;
+      font-size:20px;
+      font-weight:bold;
+      font-family:monospace;
+      height: 25px;
+      width:25px;
+      line-height:19px;
+      border-radius:10px;
+      background-color: gray;
+    }
+  </style> -->
 </head>
 
 <body>
@@ -233,8 +329,54 @@
   <button id="LOGOUT" onclick="location.href='index.html'" >LOG OUT</button>
   <button class="but" id="leaderboard" onclick="openLeaderboard()">RANK</button>
   <button class="but" id="shop" onclick="openShop()">STORE</button>
+
+  <div id="store">
+    <button id="close_but" onclick="closeStore()">x</button>
+    <h1>STORE</h1>
+    <div class="item">
+        <img src="img/item1.png">
+        <h3>Reduce cooking time</h3>
+        <h2>$ 500</h2>
+        <div class="item_number">
+            <button onclick="changeNum(1)">◀</button>
+            <form method="post">
+                <input id="num1" class="inputnumber" type="text" name="item1" value="1">
+            </form>
+            <button onclick="changeNum(2)">▶</button>
+            <button class="buybut" onclick="buyitem(1)">BUY</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="img/item2.png">
+        <h3>Food won't be bured</h3>
+        <h2>$ 500</h2>
+        <div class="item_number">
+            <button onclick="changeNum(3)">◀</button>
+            <form method="post">
+                <input id="num2" class="inputnumber" type="text" name="item2" value="1">
+            </form>
+            <button onclick="changeNum(4)">▶</button>
+            <button class="buybut" onclick="buyitem(2)">BUY</button>
+        </div>
+    </div>
+    <div id="check">
+        <p>Total Amount:</p>
+        <form action="buy.php" > 
+        <p>$ <input id="check_money" readonly></p>
+
+        <input class="invis" id="item_id" name="itemID">
+        <input class="invis" id="item_num" name="itemNum">
+        <input class="invis" id="total_money" name="money">
+        
+        <button id="ok_but">OK</button>
+        </form>
+        <button id="can_but" onclick="cancel()">CANCEL</button>
+    </div>
+  </div>
+
+  
   <div id="test">
-    <span onclick="closeLeaderboard()">x</span>
+    <button onclick="closeLeaderboard()">x</button>
     <h1>Leaderboard</h1>
     <div class="head">
       <table>
@@ -248,7 +390,7 @@
 <?php
   $sql = "SELECT *
   FROM score
-  ORDER BY MemberID DESC";
+  ORDER BY score DESC";
 
   $x =1 ;
 
@@ -275,7 +417,7 @@
   <?php $x = $x+1;
   }
   
-  while($x<6){?>
+  while($x<7){?>
     <div class="empty">
     </div>
 
