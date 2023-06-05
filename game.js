@@ -18,6 +18,9 @@ var m4_timer;
 var score = 0;
 var money = 0;
 
+// 暫停
+var gamePause = false;
+
 // 道具判斷
 var use_noOvercook_props = true; // 是否有用不燒焦道具
 
@@ -257,8 +260,10 @@ function moveMeatToTrash(meatID){
 
 function countDown(){
     if(timeLeft>0){
-        --timeLeft;
-        updateTimeLeft();
+        if(!gamePause){
+            --timeLeft;
+            updateTimeLeft();
+        }
     }
     else{
         // todo:gameover
@@ -270,6 +275,20 @@ function updateTimeLeft(){
     let sec_1 = Math.floor(timeLeft % 60 / 10);
     let sec_2 = timeLeft % 60 % 10;
     document.getElementById("timeLeft").innerHTML = `${min}:${sec_1}${sec_2}`;
+}
+
+function pause(){
+    let img = document.getElementById("pause_btn").childNodes[0];
+    gamePause = !gamePause;
+
+    if(gamePause){
+        img.setAttribute("src", "./img/play-button.png");
+        document.getElementById("hourglass").style.animationPlayState = "paused";
+    }
+    else{
+        img.setAttribute("src", "./img/pause.png");
+        document.getElementById("hourglass").style.animationPlayState = "running";
+    }
 }
 
 window.onload = function(){
