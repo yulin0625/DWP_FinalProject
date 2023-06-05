@@ -14,7 +14,21 @@ var m2_timer;
 var m3_timer;
 var m4_timer;
 
-//分數、金幣
+// 訂單
+const orderList = [
+    [2, 5]
+];
+const orderListStatus = [
+    [false, false],
+    [false, false],
+    [false, false],
+    [false, false]
+];
+
+// ?刪除任意訂單
+// let removed = fruits.splice(1, 1); 
+
+// 分數、金幣
 var score = 0;
 var money = 0;
 
@@ -266,6 +280,7 @@ function countDown(){
         }
     }
     else{
+        document.getElementById("hourglass").style.animationPlayState = "paused";
         // todo:gameover
     }
 }
