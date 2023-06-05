@@ -49,7 +49,7 @@ body {
   transform: translateY(-50%);
   height: 60px;
   animation-name: rotate;
-  animation-duration: 2s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
 }
 
