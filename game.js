@@ -1,10 +1,13 @@
 // 盤子
 const maxBurgerNumber = 2
 const burgerStatus = [0, 0]; 
-// 0:empty, 1:berger, 2:berger_m
-// 3:berger_m_c, 4:berger_m_o, 5:berger_m_c_o
-// 6:berger_m_t, 7:berger_m_l, 8:berger_m_l_t
+// 0:empty, 1:burger, 2:burger_m
+// 3:burger_m_c, 4:burger_m_o, 5:burger_m_c_o
+// 6:burger_m_t, 7:burger_m_l, 8:burger_m_l_t
 // 煎台
+const burgerStatusToName = ["", "burger", "burger_m",
+                            "burger_m_c", "burger_m_o", "burger_m_c_o",
+                            "burger_m_t", "burger_m_l", "burger_m_l_t"];
 const maxMeatNumber = 4;
 const meatStatus = [0, 0, 0, 0]; // 0:no meat, 1:raw, 2:cooked, 3:overcook
 var timeLeft;
@@ -15,8 +18,10 @@ var m3_timer;
 var m4_timer;
 
 // 訂單
+const maxOrderListNumber = 4;
 const orderList = [
-    [2, 5]
+    [2, 5],
+    [3, 4]
 ];
 const orderListStatus = [
     [false, false],
@@ -38,6 +43,61 @@ var gamePause = false;
 // 道具判斷
 var use_noOvercook_props = true; // 是否有用不燒焦道具
 
+function generateNewOrder(){
+    if(orderList.length < maxOrderListNumber){
+        let item1 = Math.floor(Math.random()*7) + 2;
+        let item2 = Math.floor(Math.random()*7) + 2;
+        orderList.push([item1, item2]);
+    }
+}
+
+function finishBurger(plateID){
+    let burgeID = burgerStatus[plateID-1];
+    for(let i=0; i < orderList.length; ++i){
+        for(let j=0; j < 2; ++j){
+            if(orderList[i][j] == burgeID){
+                orderListStatus[i][j] = true;
+                burgerStatus[plateID-1] = 0;
+                document.getElementById(`plate_${plateID}`).setAttribute("src", "img/plate.png")
+                break;
+            }
+        }
+    }
+    updateOrderList();
+}
+
+function checkOrderFinish(){
+    
+}
+
+function updateOrderList(){
+    let i;
+    for(i=0; i < orderList.length; ++i){
+        // item_1
+        // alert(burgerStatusToName[orderList[i][0]]);
+        document.getElementById(`orderItem_${i+1}-1`).setAttribute("src", `./img/${burgerStatusToName[orderList[i][0]]}.png`);
+        if(orderListStatus[i][0]==true){
+            document.getElementById(`check_${i+1}-1`).style.visibility = "visible";
+        }
+        else{
+            document.getElementById(`check_${i+1}-1`).style.visibility = "hidden";
+        }
+        // item_2
+        document.getElementById(`orderItem_${i+1}-2`).setAttribute("src", `./img/${burgerStatusToName[orderList[i][1]]}.png`);
+        if(orderListStatus[i][1]==true){
+            document.getElementById(`check_${i+1}-2`).style.visibility = "visible";
+        }
+        else{
+            document.getElementById(`check_${i+1}-2`).style.visibility = "hidden";
+        }
+        // orderList
+        document.getElementById("orderList_"+(i+1)).style.visibility = "visible";
+    }
+
+    for(i; i < maxOrderListNumber; ++i){
+        document.getElementById("orderList_"+(i+1)).style.visibility = "hidden";
+    }
+}
 
 function addIngredient(ingredient){
     switch(ingredient){
@@ -45,7 +105,7 @@ function addIngredient(ingredient){
             for(let i=0; i < maxBurgerNumber; ++i){
                 // 檢查盤子內是否有漢堡
                 if(burgerStatus[i] == 0){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger.png");
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger.png");
                     burgerStatus[i] = 1;
                     break;
                 }
@@ -69,7 +129,7 @@ function addIngredient(ingredient){
                         // 將煎台上的肉取下
                         document.getElementById("meat_1").setAttribute("src", "");
                         // 將肉放入漢堡中
-                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
+                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[0] = 0;
                         clearInterval(m1_timer);
@@ -85,7 +145,7 @@ function addIngredient(ingredient){
                         // 將煎台上的肉取下
                         document.getElementById("meat_2").setAttribute("src", "");
                         // 將肉放入漢堡中
-                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
+                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[1] = 0;
                         clearInterval(m2_timer);
@@ -101,7 +161,7 @@ function addIngredient(ingredient){
                         // 將煎台上的肉取下
                         document.getElementById("meat_3").setAttribute("src", "");
                         // 將肉放入漢堡中
-                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
+                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[2] = 0;
                         clearInterval(m3_timer);
@@ -117,7 +177,7 @@ function addIngredient(ingredient){
                         // 將煎台上的肉取下
                         document.getElementById("meat_4").setAttribute("src", "");
                         // 將肉放入漢堡中
-                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
+                        document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[3] = 0;
                         clearInterval(m4_timer);
@@ -130,13 +190,13 @@ function addIngredient(ingredient){
             for(let i=0; i < maxBurgerNumber; ++i){
                 // 盤子內是burger_m
                 if(burgerStatus[i] == 2){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_c.png");
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_c.png");
                     burgerStatus[i] = 3; // burger_m_c
                     break;
                 }
                 // 盤子內是burger_m_o
                 if(burgerStatus[i] == 4){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_c_o.png");
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_c_o.png");
                     burgerStatus[i] = 5; // burger_m_c_o
                     break;
                 }
@@ -146,13 +206,13 @@ function addIngredient(ingredient){
             for(let i=0; i < maxBurgerNumber; ++i){
                 // 盤子內是burger_m
                 if(burgerStatus[i] == 2){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_o.png");
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_o.png");
                     burgerStatus[i] = 4; // burger_m_o
                     break;
                 }
                 // 盤子內是burger_m_c
                 if(burgerStatus[i] == 3){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_c_o.png");
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_c_o.png");
                     burgerStatus[i] = 5; // burger_m_c_o
                     break;
                 }
@@ -162,13 +222,13 @@ function addIngredient(ingredient){
             for(let i=0; i < maxBurgerNumber; ++i){
                 // 盤子內是burger_m
                 if(burgerStatus[i] == 2){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_t.png");
-                    burgerStatus[i] = 6; // buger_m_t
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_t.png");
+                    burgerStatus[i] = 6; // burger_m_t
                     break;
                 }
                 // 盤子內是burger_m_l
                 if(burgerStatus[i] == 7){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_l_t.png");
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_l_t.png");
                     burgerStatus[i] = 8; // burger_m_l_t
                     break;
                 }
@@ -178,13 +238,13 @@ function addIngredient(ingredient){
             for(let i=0; i < maxBurgerNumber; ++i){
                 // 盤子內是burger_m
                 if(burgerStatus[i] == 2){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_l.png");
-                    burgerStatus[i] = 7; // buger_m_l
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_l.png");
+                    burgerStatus[i] = 7; // burger_m_l
                     break;
                 }
                 // 盤子內是burger_m_t
                 if(burgerStatus[i] == 6){
-                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m_l_t.png");
+                    document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/burger_m_l_t.png");
                     burgerStatus[i] = 8; // burger_m_l_t
                     break;
                 }
@@ -310,4 +370,5 @@ window.onload = function(){
     timeLeft = 2*60; // 遊戲時間2min
     updateTimeLeft();
     game_timer = setInterval(countDown, 1000);
+    updateOrderList();
 };
