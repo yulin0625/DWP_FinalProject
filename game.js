@@ -12,6 +12,12 @@ const maxMeatNumber = 4;
 const meatStatus = [0, 0, 0, 0]; // 0:no meat, 1:raw, 2:cooked, 3:overcook
 var timeLeft;
 var game_timer;
+var newOrder_timer;
+var newOrderTimeLeft = 1;
+// var orderList1_timer;
+// var orderList2_timer;
+// var orderList3_timer;
+// var orderList4_timer;
 var m1_timer;
 var m2_timer;
 var m3_timer;
@@ -19,10 +25,7 @@ var m4_timer;
 
 // 訂單
 const maxOrderListNumber = 4;
-const orderList = [
-    [2, 5],
-    [3, 4]
-];
+const orderList = [];
 const orderListStatus = [
     [false, false],
     [false, false],
@@ -44,35 +47,52 @@ var gamePause = false;
 var use_noOvercook_props = true; // 是否有用不燒焦道具
 
 function generateNewOrder(){
-    if(orderList.length < maxOrderListNumber){
-        let item1 = Math.floor(Math.random()*7) + 2;
-        let item2 = Math.floor(Math.random()*7) + 2;
-        orderList.push([item1, item2]);
+    if(!gamePause){
+        --newOrderTimeLeft;
+        if(newOrderTimeLeft == 0){
+            if(orderList.length < maxOrderListNumber){
+                let item1 = Math.floor(Math.random()*7) + 2;
+                let item2 = Math.floor(Math.random()*7) + 2;
+                orderList.push([item1, item2]);
+            }
+            updateOrderList();
+            newOrderTimeLeft = Math.floor(Math.random()*5) + 10;
+        }
     }
 }
 
 function finishBurger(plateID){
     let burgeID = burgerStatus[plateID-1];
-    for(let i=0; i < orderList.length; ++i){
-        for(let j=0; j < 2; ++j){
-            if(orderList[i][j] == burgeID){
+    let finish = false;
+    for(let i=0; i < orderList.length && finish == false; ++i){
+        for(let j=0; j < 2 && finish == false; ++j){
+            if(orderListStatus[i][j] == false && orderList[i][j] == burgeID){
                 orderListStatus[i][j] = true;
                 burgerStatus[plateID-1] = 0;
                 document.getElementById(`plate_${plateID}`).setAttribute("src", "img/plate.png")
-                break;
+                setTimeout(function(){
+                    checkOrderFinish(i+1);
+                }, 1000);
+                finish = true;
+                score += (10-i); // 算score，照順序完成訂單較多score
+                document.getElementById("score_box").innerHTML = `Score: ${score}`; // 更新score
             }
         }
     }
     updateOrderList();
 }
 
-function checkOrderFinish(){
-    
+function checkOrderFinish(orderListID){
+    if(orderListStatus[orderListID-1][0] == true && orderListStatus[orderListID-1][1] == true){
+        orderListStatus[orderListID-1][0] = orderListStatus[orderListID-1][1] = false;
+        orderList.splice(orderListID-1, 1);
+    }
+    updateOrderList();
 }
 
 function updateOrderList(){
-    let i;
-    for(i=0; i < orderList.length; ++i){
+    let i = 0;
+    for(i; i < orderList.length; ++i){
         // item_1
         // alert(burgerStatusToName[orderList[i][0]]);
         document.getElementById(`orderItem_${i+1}-1`).setAttribute("src", `./img/${burgerStatusToName[orderList[i][0]]}.png`);
@@ -96,6 +116,8 @@ function updateOrderList(){
 
     for(i; i < maxOrderListNumber; ++i){
         document.getElementById("orderList_"+(i+1)).style.visibility = "hidden";
+        document.getElementById(`check_${i+1}-1`).style.visibility = "hidden";
+        document.getElementById(`check_${i+1}-2`).style.visibility = "hidden";
     }
 }
 
@@ -325,6 +347,7 @@ function meatIsOvercooked(meatID){
 function moveBurgerToTrash(plateID){
     document.getElementById("plate_"+plateID).setAttribute("src", "./img/plate.png");
     burgerStatus[plateID-1] = 0;
+    score -= 50;
 }
 
 function moveMeatToTrash(meatID){
@@ -341,6 +364,8 @@ function countDown(){
     }
     else{
         document.getElementById("hourglass").style.animationPlayState = "paused";
+        clearInterval(newOrder_timer);
+
         // todo:gameover
     }
 }
@@ -359,11 +384,59 @@ function pause(){
     if(gamePause){
         img.setAttribute("src", "./img/play-button.png");
         document.getElementById("hourglass").style.animationPlayState = "paused";
+        disableAllButton();
+        clearInterval(newOrder_timer);
     }
     else{
         img.setAttribute("src", "./img/pause.png");
         document.getElementById("hourglass").style.animationPlayState = "running";
+        enableAllButton();
+        newOrder_timer = setInterval(function(){
+            generateNewOrder();
+        }, 1000);
     }
+}
+
+function disableAllButton(){
+    document.getElementById("cheese").setAttribute("onclick", "");
+    document.getElementById("onion").setAttribute("onclick", "");
+    document.getElementById("tomato").setAttribute("onclick", "");
+    document.getElementById("lettuce").setAttribute("onclick", "");
+    document.getElementById("plate_1").setAttribute("onclick", "");
+    document.getElementById("plate_1").setAttribute("ondbclick", "");
+    document.getElementById("plate_2").setAttribute("onclick", "");
+    document.getElementById("plate_2").setAttribute("ondbclick", "");
+    document.getElementById("hamburgerBun").setAttribute("onclick", "");
+    document.getElementById("rawMeat").setAttribute("onclick", "");
+    document.getElementById("meat_1").setAttribute("onclick", "");
+    document.getElementById("meat_1").setAttribute("ondbclick", "");
+    document.getElementById("meat_2").setAttribute("onclick", "");
+    document.getElementById("meat_2").setAttribute("ondbclick", "");
+    document.getElementById("meat_3").setAttribute("onclick", "");
+    document.getElementById("meat_3").setAttribute("ondbclick", "");
+    document.getElementById("meat_4").setAttribute("onclick", "");
+    document.getElementById("meat_4").setAttribute("ondbclick", "");
+}
+
+function enableAllButton(){
+    document.getElementById("cheese").setAttribute("onclick", "addIngredient('cheese')");
+    document.getElementById("onion").setAttribute("onclick", "addIngredient('onion')");
+    document.getElementById("tomato").setAttribute("onclick", "addIngredient('tomato')");
+    document.getElementById("lettuce").setAttribute("onclick", "addIngredient('lettuce')");
+    document.getElementById("plate_1").setAttribute("onclick", "finishBurger(1)");
+    document.getElementById("plate_1").setAttribute("ondbclick", "moveBurgerToTrash(1)");
+    document.getElementById("plate_2").setAttribute("onclick", "finishBurger(2)");
+    document.getElementById("plate_2").setAttribute("ondbclick", "moveBurgerToTrash(2)");
+    document.getElementById("hamburgerBun").setAttribute("onclick", "addIngredient('hambergerBun')");
+    document.getElementById("rawMeat").setAttribute("onclick", "addIngredient('rawMeat')");
+    document.getElementById("meat_1").setAttribute("onclick", "addIngredient('meat_1')");
+    document.getElementById("meat_1").setAttribute("ondbclick", "moveMeatToTrash(1)");
+    document.getElementById("meat_2").setAttribute("onclick", "addIngredient('meat_2')");
+    document.getElementById("meat_2").setAttribute("ondbclick", "moveMeatToTrash(2)");
+    document.getElementById("meat_3").setAttribute("onclick", "addIngredient('meat_3')");
+    document.getElementById("meat_3").setAttribute("ondbclick", "moveMeatToTrash(3)");
+    document.getElementById("meat_4").setAttribute("onclick", "addIngredient('meat_4')");
+    document.getElementById("meat_4").setAttribute("ondbclick", "moveMeatToTrash(4)");
 }
 
 window.onload = function(){
@@ -371,4 +444,9 @@ window.onload = function(){
     updateTimeLeft();
     game_timer = setInterval(countDown, 1000);
     updateOrderList();
+    generateNewOrder();
+    newOrderTimeLeft = Math.floor(Math.random()*5) + 2;
+    newOrder_timer = setInterval(function(){
+        generateNewOrder();
+    }, 1000);
 };
