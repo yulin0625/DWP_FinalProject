@@ -1,31 +1,42 @@
 body {
   width: 100%;
-  margin: 0 auto;
+	height: 100%;
+  margin: 0;
   background-image: url(./img/home_background.jpg);
   background-size: cover;
 }
 
+#score_box {
+margin: 8px 8px;
+background-color:rgb(65, 94, 128);
+width: 200px;
+height: 50px;
+border-radius: 50px;
+line-height: 50px;
+text-align: center;
+border: 5px solid rgb(201, 210, 226);
+color: aliceblue;
+font-weight: bold;
+font-size: 23px;
+display: inline-block;
+margin-right: 10px;
+font-family: monospace ;
+}
+
 /* 頂部控制列 */
-#controlBar {
-  position: absolute;
-  width: 98%;
-  height: 10%;
-  padding: 1% 1% 0 1%;
+#pause_btn {
+	float: right;
+	margin: 8px 8px;
 }
 
-#pause img {
+#pause_btn img {
   height: 50px;
   width: 50px;
-}
-
-#pause {
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
 }
 
 #countDown {
   position: absolute;
+	top: 0;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgb(64, 100, 162);
@@ -49,7 +60,7 @@ body {
   transform: translateY(-50%);
   height: 60px;
   animation-name: rotate;
-  animation-duration: 2s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
 }
 
@@ -79,6 +90,67 @@ body {
         top: 50%;
         transform: translateY(-50%) rotate(360deg);
     }
+}
+
+/* 訂單 */
+#orderArea {
+	position: absolute;
+	width: 100%;
+	height: 220px;
+	top: 120px;
+}
+
+.orderList {
+	padding: 0px 15px;
+	height: 100%;
+}
+
+.item_1 img{
+	width: 110px;
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.item_2 img{
+	width: 110px;
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+#orderList_1 {
+	position: absolute;
+	width: 200px;
+	height: 220px;
+	left: 50px;
+	background-color: antiquewhite;
+}
+
+#orderList_2 {
+	position: absolute;
+	width: 200px;
+	height: 220px;
+	left: 350px;
+	background-color: antiquewhite;
+}
+
+#orderList_3 {
+	position: absolute;
+	width: 200px;
+	height: 220px;
+	left: 650px;
+	background-color: antiquewhite;
+}
+
+#orderList_4 {
+	position: absolute;
+	width: 200px;
+	height: 220px;
+	left: 950px;
+	background-color: antiquewhite;
 }
 
 #desk {
@@ -166,7 +238,7 @@ body {
   /* position: absolute; */
   position: relative;
   display: inline-block;
-  height: 50%;
+  height: 48%;
   width: 100%;
 }
 

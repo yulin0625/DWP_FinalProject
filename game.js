@@ -14,6 +14,30 @@ var m2_timer;
 var m3_timer;
 var m4_timer;
 
+// 訂單
+const orderList = [
+    [2, 5]
+];
+const orderListStatus = [
+    [false, false],
+    [false, false],
+    [false, false],
+    [false, false]
+];
+
+// ?刪除任意訂單
+// let removed = fruits.splice(1, 1); 
+
+// 分數、金幣
+var score = 0;
+var money = 0;
+
+// 暫停
+var gamePause = false;
+
+// 道具判斷
+var use_noOvercook_props = true; // 是否有用不燒焦道具
+
 
 function addIngredient(ingredient){
     switch(ingredient){
@@ -48,6 +72,7 @@ function addIngredient(ingredient){
                         document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[0] = 0;
+                        clearInterval(m1_timer);
                         break;
                     }
                 }
@@ -63,6 +88,7 @@ function addIngredient(ingredient){
                         document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[1] = 0;
+                        clearInterval(m2_timer);
                         break;
                     }
                 }
@@ -78,6 +104,7 @@ function addIngredient(ingredient){
                         document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[2] = 0;
+                        clearInterval(m3_timer);
                         break;
                     }
                 }
@@ -93,6 +120,7 @@ function addIngredient(ingredient){
                         document.getElementById("plate_"+(i+1)).setAttribute("src", "./img/buger_m.png");
                         burgerStatus[i] = 2;
                         meatStatus[3] = 0;
+                        clearInterval(m4_timer);
                         break;
                     }
                 }
@@ -197,6 +225,41 @@ function cookMeat(meatID){
 function meatIsCooked(meatID){
     document.getElementById("meat_"+meatID).setAttribute("src", "./img/meat_c.png");
     meatStatus[meatID-1] = 2;
+    // 燒焦計時
+    if(!use_noOvercook_props){
+        switch(meatID){
+            case 1:
+                m1_timer = setTimeout(
+                    function(){meatIsOvercooked(1);},
+                    5000
+                );
+                break;
+            case 2:
+                m2_timer = setTimeout(
+                    function(){meatIsOvercooked(2);},
+                    5000
+                );
+                break;
+            case 3:
+                m3_timer = setTimeout(
+                    function(){meatIsOvercooked(3);},
+                    5000
+                );
+                break;
+            case 4:
+                m4_timer = setTimeout(
+                    function(){meatIsOvercooked(4);},
+                    5000
+                );
+                break;
+        }
+    }
+}
+
+// 讓肉燒焦
+function meatIsOvercooked(meatID){
+    meatStatus[meatID-1] = 3;
+    document.getElementById("meat_"+meatID).setAttribute("src", "./img/meat_oc.png");
 }
 
 function moveBurgerToTrash(plateID){
@@ -204,22 +267,47 @@ function moveBurgerToTrash(plateID){
     burgerStatus[plateID-1] = 0;
 }
 
+function moveMeatToTrash(meatID){
+    document.getElementById("meat_"+meatID).setAttribute("src", "");
+    meatStatus[meatID-1] = 0;
+}
+
 function countDown(){
     if(timeLeft>0){
-        --timeLeft;
-        let min = Math.floor(timeLeft / 60);
-        let sec_1 = Math.floor(timeLeft % 60 / 10);
-        let sec_2 = timeLeft % 60 % 10;
-        document.getElementById("timeLeft").innerHTML = `${min}:${sec_1}${sec_2}`;
-        // console.log(`${min}:${sec_1}${sec_2}`);
+        if(!gamePause){
+            --timeLeft;
+            updateTimeLeft();
+        }
     }
     else{
+        document.getElementById("hourglass").style.animationPlayState = "paused";
         // todo:gameover
+    }
+}
+
+function updateTimeLeft(){
+    let min = Math.floor(timeLeft / 60);
+    let sec_1 = Math.floor(timeLeft % 60 / 10);
+    let sec_2 = timeLeft % 60 % 10;
+    document.getElementById("timeLeft").innerHTML = `${min}:${sec_1}${sec_2}`;
+}
+
+function pause(){
+    let img = document.getElementById("pause_btn").childNodes[0];
+    gamePause = !gamePause;
+
+    if(gamePause){
+        img.setAttribute("src", "./img/play-button.png");
+        document.getElementById("hourglass").style.animationPlayState = "paused";
+    }
+    else{
+        img.setAttribute("src", "./img/pause.png");
+        document.getElementById("hourglass").style.animationPlayState = "running";
     }
 }
 
 window.onload = function(){
     timeLeft = 2*60; // 遊戲時間2min
-
+    updateTimeLeft();
     game_timer = setInterval(countDown, 1000);
 };
