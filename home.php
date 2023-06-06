@@ -10,317 +10,6 @@
   <title>HOME</title>
   <link rel="stylesheet" href="home.css">
   <script src="home.js"></script>
-  <!-- <style>
-    #test {
-      background-color: rgb(73, 65, 40);
-      padding: 15px 15px 5px 15px;
-      float: right;
-      position: fixed;
-      top: 100px;
-      right: 20px;
-      width: 500px;
-      border-radius: 20px;
-      text-align: center;
-      /* height:400px; */
-      display: none;
-    }
-
-    #test h1 {
-      font-family:monospace ;
-      font-size: 40px;
-      color:rgb(244, 235, 222);
-      margin:3px 0 10px 0;
-    }
-
-    #test button {
-      position: absolute;
-      right:20px;
-      font-size:20px;
-      font-weight:bold;
-      font-family:monospace;
-      height: 25px;
-      width:25px;
-      line-height:19px;
-      border-radius:10px;
-      background-color: gray;
-    }
-
-    table {
-      width: 500px;
-      /* background-color: white; */
-      font-size:20px;
-      text-align:center;
-      /* border: 3px solid blue; */
-      border-radius:20px;
-    }
-
-    tr {
-      height: 40px;
-    }
-
-    th:first-child , td:first-child {
-      width:100px;
-    }
-    
-    th:nth-child(2) , td:nth-child(2) {
-      width:200px;
-    }
-
-    .rank {
-      height:50px;
-      width: 500px;
-      border-radius: 15px;
-      background-color: rgb(230, 230, 230);
-      color:rgb(80, 71, 55);
-      margin-bottom: 10px;
-      font-family:monospace ;
-    }
-
-    .rank:hover {
-      background-color: rgb(229, 217, 182);
-      width: 510px;
-      margin-left: -10px;
-      padding-left:10px;
-      font-size:100px;
-      color:rgb(54, 52, 48);
-
-      font-weight: bold;
-      transition:200ms;
-    }
-
-
-    .head{
-      height:50px;
-      width: 500px;
-      border-radius: 15px;
-      margin-bottom: 10px;
-      font-family:monospace ;
-      background-color: rgb(230, 166, 102);
-    }
-
-    .empty {
-      background-color: gray;
-      height:50px;
-      width: 500px;
-      border-radius: 15px;
-      margin-bottom: 10px;
-      font-family:monospace ;
-    }
-
-    #name_box {
-        background-color:rgb(65, 94, 128);
-        width: 200px;
-        height: 50px;
-        border-radius: 50px;
-        line-height: 50px;
-        text-align: center;
-        border: 5px solid rgb(201, 210, 226);
-        color: aliceblue;
-        font-weight: bold;
-        font-size: 23px;
-        display: inline-block;
-        margin-right: 10px;
-        font-family:monospace ;
-    }
-
-    #m_box {
-        background-color:rgb(65, 94, 128);
-        width: 200px;
-        height: 50px;
-        border-radius: 50px;
-        line-height: 50px;
-        text-align: center;
-        color: aliceblue;
-        border: 5px solid rgb(196, 204, 219);
-        font-weight: bold;
-        font-size: 23px;
-        display: inline-block;
-        font-family:monospace ;
-    }
-
-    .but {
-        float: right;
-        background-color:rgb(240, 224, 181);
-        width: 200px;
-        height: 50px;
-        border-radius: 50px;
-        line-height: 30px;
-        text-align: center;
-        color: rgb(91, 65, 13);
-        border: 5px solid rgb(101, 86, 66);
-        font-weight: bold;
-        font-size: 23px;
-        margin-right: 10px;
-        font-family:monospace ;
-    }
-
-    .but:hover {
-      border: 5px solid rgb(196, 188, 179);
-      background-color:rgb(111, 92, 76);
-      color:rgb(201, 197, 190)
-    }
-
-    .but:active {
-        width: 180px;
-        height: 46px;
-        margin:4px 20px 0 10px;
-        line-height:35px;
-        font-size:20px;
-    }
-
-    #playGameBtn {
-        float: right;
-        background-color:rgb(128, 17, 17);
-        width: 300px;
-        height: 90px;
-        border-radius: 50px;
-        line-height: 30px;
-        text-align: center;
-        color: rgb(211, 227, 241);
-        border: 7px solid rgb(72, 22, 22);
-        font-weight: bold;
-        font-size: 40px;
-        font-family:monospace ;
-    }
-
-    #playGameBtn:hover{
-      width: 300px;
-      height: 90px;
-      font-size: 40px;
-      background-color:rgb(230, 145, 109);
-      color: rgb(103, 38, 6);
-      border-color: rgb(100, 39, 8);
-    }
-
-    #playGameBtn:active{
-      width: 290px;
-      height: 85px;
-      font-size: 38px;
-      margin-top: 3px ;
-      /* transition: 2000 ms; */
-    }
-
-    #LOGOUT {
-      float: right;
-      background-color:rgb(211, 227, 241);
-      width: 130px;
-      height: 50px;
-      border-radius: 50px;
-      line-height: 30px;
-      text-align: center;
-      color: rgb(21, 39, 54);
-      border: 5px solid rgb(90, 121, 148);
-      font-weight: bold;
-      font-size: 23px;
-      margin-right: 10px;
-      font-family:monospace ;
-    }
-
-    #LOGOUT:hover {
-        border: 5px solid rgb(179, 191, 196);
-        background-color:rgb(76, 88, 111);
-        color: aliceblue;
-    }
-
-    #LOGOUT:active {
-        width: 120px;
-        height: 47px;
-        margin:2px 15px 0 5px;
-        line-height:35px;
-        font-size: 20px;
-    }
-
-    
-    #store {
-        height: 540px;
-        width: 35%;
-        background-color: rgb(144, 107, 60);
-        position: absolute;
-        left: 30px;
-        top:90px;
-        border: 6px solid rgb(252, 224, 140);
-        border-radius: 20px;
-        display: none;
-    }
-    #store h1 {
-        text-align: center;
-        font-size: 40px;
-        margin: 15px 0;
-        color: rgb(255, 249, 240);
-    }
-    #store img{
-        height: 150px;
-        background-color: aliceblue;
-        border-radius: 30px;
-        margin: 30px;
-        position: absolute;
-    }
-    .item {
-        height:210px;
-        background-color: rgb(176, 158, 135);
-        margin-bottom: 20px;
-    }
-    .item h3{
-        position: absolute;
-        left: 210px;
-        font-size: 25px;
-        margin-top: 40px;
-    }
-
-    .item h2{
-        position: absolute;
-        left: 210px;
-        font-size: 30px;
-        margin-top: 85px;
-    }
-
-    .inputnumber{
-        width: 30px;
-    }
-
-    .item_number {
-        position: absolute;
-        left: 210px;
-        font-size: 30px;
-        margin-top: 130px;
-    }
-
-    .item_number form {
-        display: inline-block;
-    }
-
-    .item_number button {
-        height:30px;
-    }
-
-    .item_number input {
-        height:24px;
-    }
-
-    .item_number input {
-        height:24px;
-    }
-
-    .buybut {
-        background-color: rgb(247, 95, 57);
-        width: 100px;
-        margin-left: 20px;
-    }
-
-    #store #close_but {
-      position: absolute;
-      right:10px;
-      top:10px;
-      font-size:20px;
-      font-weight:bold;
-      font-family:monospace;
-      height: 25px;
-      width:25px;
-      line-height:19px;
-      border-radius:10px;
-      background-color: gray;
-    }
-  </style> -->
 </head>
 
 <body>
@@ -359,7 +48,7 @@
   ?>
 
         <img src="img/item1.png">
-        <span class="itemnum"><?php echo $item1num ?></span>
+        <span id="storeitem1num" class="itemnum"><?php echo $item1num ?></span>
         <h3>Reduce cooking time</h3>
         <h2>$ 500</h2>
         <div class="item_number">
@@ -387,16 +76,16 @@
   
     // 是否有查詢到使用者紀錄
     if ( $total_records > 0 ) {
-      $item1num = $row[2];
+      $item2num = $row[2];
     }else{
-      $item1num = 0;
+      $item2num = 0;
     }
   
   ?>
 
     <div class="item">
         <img src="img/item2.png">
-        <span class="itemnum"><?php echo $item1num ?></span>
+        <span id="storeitem2num" class="itemnum"><?php echo $item2num ?></span>
         <h3>Food won't be bured</h3>
         <h2>$ 500</h2>
         <div class="item_number">
@@ -481,12 +170,58 @@
     <img src="img/back.png" onclick="backToHome()">
   </div>
 
+
+  <?php
   
+  if ( isset($_POST["start"]) ){
+    $use1 = $_POST["item1"];
+    $use2 = $_POST["item2"];
+    
+    $con = mysqli_connect("localhost","root","","webproject");
+    if (empty($con)) {
+        print mysqli_error($con);
+        die("資料庫連接失敗！");
+        exit;
+    }
+
+    if($use1 == 1){
+      $itemID = 1;
+      $sql = "UPDATE store 
+      SET number = $item1num-1
+      WHERE MemberID = '{$memberID}' 
+      and itemID = '{$itemID}'";
+
+      $result = mysqli_query($con, $sql);
+      header("Location: game.html");
+    }
+
+    if($use2 == 1){
+      $itemID = 2;
+      $sql = "UPDATE store 
+      SET number = $item2num-1
+      WHERE MemberID = '{$memberID}' 
+      and itemID = '{$itemID}'";
+
+      $result = mysqli_query($con, $sql);
+      header("Location: game.html");
+
+    }
+  }
+  ?>
+
+
+
   <div id="useItem">
     <h1>Choose item</h1>
+    <span id="item1num" class="itemnum"></span>
     <img onclick=" chooseItem(1)" src="img/item1.png" id="ch_item_1">
+    <span id="item2num" class="itemnum"></span>
     <img onclick=" chooseItem(2)" src="img/item2.png" id="ch_item_2">
-    <button onclick="startGame()">PLAY!</button>
+    <form name="start"  method="post">
+      <input class="invis" name="item1" id="item1input" value=0>
+      <input  id="item2input" class="invis" name="item2"  value=0>
+      <input onclick="startGame()" value="PLAY!" type="submit" id=itemButton name="start" >
+    </form>
   </div>
 
 

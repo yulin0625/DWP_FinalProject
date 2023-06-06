@@ -66,9 +66,9 @@ function finishBurger(plateID){
     updateOrderList();
 }
 
-function checkOrderFinish(){
+// function checkOrderFinish(){
     
-}
+// }
 
 function updateOrderList(){
     let i;
