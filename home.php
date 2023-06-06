@@ -1,5 +1,6 @@
 <?php  
   session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -334,7 +335,31 @@
     <button id="close_but" onclick="closeStore()">x</button>
     <h1>STORE</h1>
     <div class="item">
+    
+<?php
+    
+  $con = mysqli_connect("localhost","root","","webproject");
+  $memberID = $_SESSION['MemberID'];
+  $i = 1;
+  $sql = "SELECT *
+  FROM store
+  WHERE MemberID ='{$memberID}'  AND itemID = '{$i}'";
+
+  $result = mysqli_query($con, $sql);
+  $total_records = mysqli_num_rows($result);//取得資料筆數
+  $row = mysqli_fetch_array($result, MYSQLI_NUM);
+
+  // 是否有查詢到使用者紀錄
+  if ( $total_records > 0 ) {
+    $item1num = $row[2];
+  }else{
+    $item1num = 0;
+  }
+
+  ?>
+
         <img src="img/item1.png">
+        <span class="itemnum"><?php echo $item1num ?></span>
         <h3>Reduce cooking time</h3>
         <h2>$ 500</h2>
         <div class="item_number">
@@ -346,8 +371,32 @@
             <button class="buybut" onclick="buyitem(1)">BUY</button>
         </div>
     </div>
+
+<?php
+    
+    $con = mysqli_connect("localhost","root","","webproject");
+    $memberID = $_SESSION['MemberID'];
+    $i = 2;
+    $sql = "SELECT *
+    FROM store
+    WHERE MemberID ='{$memberID}'  AND itemID = '{$i}'";
+  
+    $result = mysqli_query($con, $sql);
+    $total_records = mysqli_num_rows($result);//取得資料筆數
+    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+  
+    // 是否有查詢到使用者紀錄
+    if ( $total_records > 0 ) {
+      $item1num = $row[2];
+    }else{
+      $item1num = 0;
+    }
+  
+  ?>
+
     <div class="item">
         <img src="img/item2.png">
+        <span class="itemnum"><?php echo $item1num ?></span>
         <h3>Food won't be bured</h3>
         <h2>$ 500</h2>
         <div class="item_number">
@@ -361,7 +410,7 @@
     </div>
     <div id="check">
         <p>Total Amount:</p>
-        <form action="buy.php" > 
+        <form action="buy.php" method="post" > 
         <p>$ <input id="check_money" readonly></p>
 
         <input class="invis" id="item_id" name="itemID">
@@ -427,6 +476,19 @@
   ?>
     
   </div>
+
+  <div id="back">
+    <img src="img/back.png" onclick="backToHome()">
+  </div>
+
+  
+  <div id="useItem">
+    <h1>Choose item</h1>
+    <img onclick=" chooseItem(1)" src="img/item1.png" id="ch_item_1">
+    <img onclick=" chooseItem(2)" src="img/item2.png" id="ch_item_2">
+    <button onclick="startGame()">PLAY!</button>
+  </div>
+
 
 </body>
 </html>

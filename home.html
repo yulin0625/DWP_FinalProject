@@ -23,6 +23,7 @@
     <h1>STORE</h1>
     <div class="item">
         <img src="img/item1.png">
+        <span class="itemnum">1</span>
         <h3>Reduce cooking time</h3>
         <h2>$ 500</h2>
         <div class="item_number">
@@ -36,6 +37,7 @@
     </div>
     <div class="item">
         <img src="img/item2.png">
+        <span class="itemnum">1</span>
         <h3>Food won't be bured</h3>
         <h2>$ 500</h2>
         <div class="item_number">
@@ -105,6 +107,18 @@
   }
   ?>
     
+  </div>
+
+
+  <div id="back">
+    <img src="img/back.png" onclick="backToHome()">
+  </div>
+
+  <div id="useItem">
+    <h1>Choose item</h1>
+    <img onclick=" chooseItem(1)" src="img/item1.png" id="ch_item_1">
+    <img onclick=" chooseItem(2)" src="img/item2.png" id="ch_item_2">
+    <button onclick="startGame()">PLAY!</button>
   </div>
 
 </body>
