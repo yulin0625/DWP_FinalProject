@@ -11,7 +11,29 @@ function closeStore(){
 }
 
 function playGame(){
-    window.location.href='./game.html';
+    // window.location.href='./game.html';
+    document.getElementById("name_box").style.display= "none";
+    document.getElementById("m_box").style.display= "none";
+    document.getElementById("playGameBtn").style.display= "none";
+    document.getElementById("LOGOUT").style.display= "none";
+    document.getElementById("leaderboard").style.display= "none";
+    document.getElementById("shop").style.display= "none";
+    document.getElementById("store").style.display= "none";
+    document.getElementById("test").style.display= "none";
+    document.getElementById("back").style.display= "block";
+    document.getElementById("useItem").style.display= "block";
+}
+
+function backToHome(){
+    // window.location.href='./game.html';
+    document.getElementById("name_box").style.display= "inline-block";
+    document.getElementById("m_box").style.display= "inline-block";
+    document.getElementById("playGameBtn").style.display= "block";
+    document.getElementById("LOGOUT").style.display= "block";
+    document.getElementById("leaderboard").style.display= "block";
+    document.getElementById("shop").style.display= "block";
+    document.getElementById("store").style.display= "block";
+    document.getElementById("back").style.display= "none";
 }
 
 function openShop(){
@@ -56,4 +78,23 @@ function buyitem(i) {
 
 function cancel(){
     document.getElementById("check").style.display= "none";
+}
+
+function chooseItem(i) {
+    let id =  "ch_item_"+i;
+    document.getElementById(id).style.border= "6px solid rgb(221, 130, 107)";
+    document.getElementById(id).style.margin= "19px";
+
+    document.getElementById(id).setAttribute('onclick', 'unchooseitem('+i+')');
+}
+
+function unchooseitem(i){
+    let id =  "ch_item_"+i;
+    document.getElementById(id).style.border= "5px solid rgb(152, 170, 189)";
+    document.getElementById(id).setAttribute('onclick', 'chooseItem('+i+')');
+    document.getElementById(id).style.margin= "20px";
+}
+
+function startGame() {
+    window.location.href='./game.html';
 }
