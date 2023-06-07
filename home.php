@@ -15,13 +15,13 @@
 <head>
   <meta charset="UTF-8">
   <title>HOME</title>
-  <link rel="stylesheet" href="home.css">
-  <script src="home.js"></script>
+  <link rel="stylesheet" href="home.css?ver=1">
+  <script src="home.js?ver=1"></script>
 </head>
 
 <body>
   <div id="name_box"><?php echo $memberID ?></div>
-  <div id="m_box">$ <?php echo $money ?></div>
+  <div id="m_box">$ <span id="player_money"><?php echo $money ?></span></div>
   <button id="playGameBtn" onclick="playGame()">START!</button>
   <button id="LOGOUT" onclick="location.href='index.html'" >LOG OUT</button>
   <button class="but" id="leaderboard" onclick="openLeaderboard()">RANK</button>
@@ -116,6 +116,11 @@
         <button id="ok_but">OK</button>
         </form>
         <button id="can_but" onclick="cancel()">CANCEL</button>
+    </div>
+
+    <div id="noMoney">
+        <p>You don't have enough money!!</p>
+        <button id="ok_but" onclick="closewarning()">OK</button>
     </div>
   </div>
 
@@ -216,8 +221,6 @@
     header("Location: game.html");
   }
   ?>
-
-
 
   <div id="useItem">
     <h1>Choose item</h1>

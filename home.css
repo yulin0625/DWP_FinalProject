@@ -26,15 +26,15 @@ body {
     width: 510px;
     border-radius: 20px;
     text-align: center;
-    /* height:400px; */
     display: none;
-    height:475px;
+    height:485px;
     overflow-x: hidden;
     overflow-y: scroll;
   }
 
   #test h1 {
-    font-family:monospace ;
+    font-family:fantasy;
+    font-weight: 100;
     font-size: 40px;
     color:rgb(244, 235, 222);
     margin:3px 0 10px 0;
@@ -132,11 +132,11 @@ body {
       text-align: center;
       border: 5px solid rgb(201, 210, 226);
       color: aliceblue;
-      font-weight: bold;
+      /* font-weight: bold; */
       font-size: 23px;
       display: inline-block;
       margin-right: 10px;
-      font-family:monospace ;
+      font-family:fantasy ;
       margin:10px 20px;
   }
 
@@ -149,10 +149,11 @@ body {
       text-align: center;
       color: aliceblue;
       border: 5px solid rgb(196, 204, 219);
-      font-weight: bold;
+      /* font-weight: bold; */
       font-size: 23px;
       display: inline-block;
-      font-family:monospace ;
+     font-family:fantasy;
+
   }
 
   .but {
@@ -193,7 +194,7 @@ body {
       border-radius: 50px;
       line-height: 30px;
       text-align: center;
-      color: rgb(211, 227, 241);
+      color: rgb(240, 228, 223);
       border: 7px solid rgb(72, 22, 22);
       font-weight: bold;
       font-size: 40px;
@@ -266,6 +267,10 @@ body {
       line-height: 50px;
       margin: 15px 0;
       color: rgb(255, 249, 240);
+     font-family:fantasy;
+    font-weight: 100;
+
+
   }
   #store img{
       height: 150px;
@@ -284,6 +289,8 @@ body {
       left: 210px;
       font-size: 25px;
       margin-top: 40px;
+     font-family:monospace;
+
   }
 
   .item h2{
@@ -291,6 +298,8 @@ body {
       left: 210px;
       font-size: 30px;
       margin-top: 85px;
+     /* font-family:monospace; */
+
     }
     
     .itemnum {
@@ -339,6 +348,8 @@ body {
       background-color: rgb(247, 95, 57);
       width: 100px;
       margin-left: 20px;
+      font-family:monospace ;
+      font-weight: bold;
   }
 
   #store #close_but {
@@ -355,16 +366,44 @@ body {
     background-color: gray;
   }
 
+  #noMoney {
+    position: absolute;
+    background-color: rgb(236, 220, 214);
+    border: 7px solid rgb(104, 73, 73);
+    height:140px;
+    width: 300px;
+    border-radius: 20px;
+    text-align: center;
+    top:180px;
+    left: 100px;
+    display: none;
+  }
+
+  #noMoney p {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  #noMoney button{
+    font-size: 18px;
+    background-color: rgb(218, 153, 127);
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    font-family:monospace;
+  }
+
   #check {
     position: absolute;
-    top:0;
-    background-color: rgb(245, 239, 220);
-    border: 7px solid rgb(124, 160, 160);
+    background-color: rgb(245, 242, 233);
+    border: 7px solid rgb(119, 129, 131);
     height:200px;
     width: 300px;
     border-radius: 20px;
     text-align: center;
-    top:100px;
+    top:160px;
     left: 100px;
     display: none;
   }
@@ -380,7 +419,10 @@ body {
     height: 30px;
     border-radius: 30px;
     font-weight: bold;
+    font-size: 16px;
     color: rgb(255, 255, 255);
+    font-family:monospace;
+
   }
 
   #ok_but {
@@ -404,6 +446,8 @@ body {
     width:80px;
     height:25px;
     font-size: 20px;
+    font-family:monospace;
+
   }
 
   .invis{
@@ -435,6 +479,7 @@ body {
   #useItem h1 {
     margin-top: 30px;
     font-size: 40px;
+    font-family:fantasy;
   }
 
   #useItem img{

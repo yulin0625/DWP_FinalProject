@@ -366,14 +366,15 @@ font-family: monospace ;
 
 #star h1 {
   font-size: 50px;
-  font-family: monospace;
+  font-family:fantasy;
   margin-top: 30px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 #star h2 {
   font-size: 45px;
-  font-family: monospace;
+  font-family:fantasy;
   margin: 5px;
   margin-bottom: 20px;
 }

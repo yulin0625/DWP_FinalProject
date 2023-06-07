@@ -57,12 +57,24 @@ function buyitem(i) {
     let id='num'+i;
     let num = document.getElementById(id).value;
     let money = document.getElementById(id).value*500;
-    document.getElementById("check").style.display= "block";
-    document.getElementById("check_money").value= money;
-    
-    document.getElementById("item_id").value= i;
-    document.getElementById("item_num").value= num;
-    document.getElementById("total_money").value= money;
+    let playerMoney = document.getElementById("player_money").innerHTML;
+    if(playerMoney>=money){
+        document.getElementById("check").style.display= "block";
+        document.getElementById("check_money").value= money;
+        
+        document.getElementById("item_id").value= i;
+        document.getElementById("item_num").value= num;
+        document.getElementById("total_money").value= money;
+    }else{
+        // alert("Your money is not enough!!");
+        document.getElementById("noMoney").style.display= 'block';
+
+    }
+}
+
+function closewarning(){
+    document.getElementById("noMoney").style.display= 'none';
+
 }
 
 function cancel(){
