@@ -1,5 +1,4 @@
-// var gameTime_s = 2*60;
-var gameTime_s = 20;
+var gameTime_s = 2*60;
 
 // 盤子
 const maxBurgerNumber = 2
@@ -24,7 +23,7 @@ const meat_timers = [null, null, null, null];
 const meat_timeLeft_ms = [0, 0, 0, 0];
 const meat_animation_period_ms = 100;
 // 肉熟的時間
-const cookingTime = 6;
+var cookingTime = 6;
 // 肉緩衝時間
 const bufferTime1 = 1; // 肉煮好多久後隱藏 progress bar
 const bufferTime2 = 2; // 隱藏 progress bar多久後肉開始燒焦
@@ -57,6 +56,7 @@ var gamePause = false;
 
 // 道具判斷
 var use_noOvercook_props = false; // 是否有用不燒焦道具
+var use_speed_props = false; // 是否有用速度增加道具
 
 function generateNewOrder(){
     if(!gamePause){
@@ -571,6 +571,15 @@ function starAnimation(){
 }
 
 window.onload = function(){
+    if(localStorage.getItem("item1") == 1){
+        use_speed_props = true;
+        cookingTime = 2;
+        document.getElementById("item1").style.display = "inline-block";
+    }
+    if(localStorage.getItem("item2") == 1){
+        use_noOvercook_props = true;
+        document.getElementById("item2").style.display = "inline-block";
+    }
     timeLeft = gameTime_s; // 遊戲時間2min
     updateTimeLeft();
     game_timer = setInterval(countDown, 1000);

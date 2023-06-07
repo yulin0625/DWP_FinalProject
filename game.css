@@ -109,6 +109,36 @@ font-family: monospace ;
     }
 }
 
+
+/* 道具 */
+#itemArea {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  width: 125px;
+  height: 320px;
+}
+
+#item1 {
+  display: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  background-color: aliceblue;
+  border-radius: 30px;
+}
+#item2 {
+  display: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  background-color: aliceblue;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+
 /* 訂單 */
 #orderArea {
 	position: absolute;
