@@ -90,7 +90,7 @@ function orderListAnimation(orderListID){
         }
         else {
             // clearInterval(orderList_timers[orderListID-1]);
-            score -= orerListPunish;
+            score -= orderListPunish;
             if(score < 0){
                 score = 0;
             }
