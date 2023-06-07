@@ -33,6 +33,7 @@ const overcookedTime = 15;
 // 燒焦懲罰分數
 const overcookPunish = 20;
 // 訂單
+const orderListPunish = 30;
 const maxOrderListNumber = 4;
 const orderList = [];
 const orderListStatus = [];
@@ -67,9 +68,7 @@ function generateNewOrder(){
                 orderList.push([item1, item2]);
                 orderListStatus.push([false, false]);
                 let orderListID = orderList.length;
-                // orderList_timeLeft_ms[orderListID-1] = (Math.floor(Math.random()*5) + 15)*1000; // todo:待調整參數
                 orderList_timeLeft_ms.push((Math.floor(Math.random()*5) + 15)*1000);
-                // orderList_time_s[orderListID-1] = orderList_timeLeft_ms[orderListID-1] / 1000;
                 orderList_time_s.push(orderList_timeLeft_ms[orderListID-1] / 1000);
                 orderList_timers[orderListID-1] = setInterval(function(){
                     orderListAnimation(orderListID);
@@ -91,7 +90,7 @@ function orderListAnimation(orderListID){
         }
         else {
             // clearInterval(orderList_timers[orderListID-1]);
-            score -= 30;
+            score -= orerListPunish;
             if(score < 0){
                 score = 0;
             }
@@ -440,12 +439,6 @@ function overcookedCountDown(meatID){
                 clearInterval(meat_timers[meatID-1]);
                 // 顯示進度條
                 document.getElementById(`meat_${meatID}_progress`).style.visibility = "visible";
-
-                // // 歸零
-                // document.getElementById(`meat_${meatID}_progressBar`).style.width = "0%";
-                // // 更改 progressBar 顏色
-                // document.getElementById(`meat_${meatID}_progressBar`).classList.remove("progress-bar-success");
-                // document.getElementById(`meat_${meatID}_progressBar`).classList.add("progress-bar-danger");
                 meat_timeLeft_ms[meatID-1] = overcookedTime * 1000;
                 meat_timers[meatID-1] = setInterval(function(){
                     meatOvercookedAnimation(meatID);
@@ -485,7 +478,7 @@ function meatIsOvercooked(meatID){
 function moveBurgerToTrash(plateID){
     document.getElementById("plate_"+plateID).setAttribute("src", "./img/plate.png");
     burgerStatus[plateID-1] = 0;
-    score -= 50;
+    score -= 30;
 }
 
 function moveMeatToTrash(meatID){
