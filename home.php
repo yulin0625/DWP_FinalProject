@@ -206,6 +206,7 @@
       header("Location: game.html");
 
     }
+    header("Location: game.html");
   }
   ?>
 
