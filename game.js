@@ -87,7 +87,19 @@ function finishBurger(plateID){
                 }, 1000);
                 finish = true;
                 score += (10-i); // 算score，照順序完成訂單較多score
+                // money
+                if(burgeID == 2){ // 肉漢堡
+                    money += 4;
+                }
+                else if(burgeID == 5 || burgeID == 8){ // 雙層料漢堡
+                    money += 10;
+                }
+                else{ // 單層料漢堡
+                    money += 5;
+                }
                 document.getElementById("score_box").innerHTML = `Score: ${score}`; // 更新score
+                document.getElementById("money_box").innerHTML = `Money: ${money}`; // 更新money
+
             }
         }
     }
@@ -532,8 +544,11 @@ function showStar(){
     else if(score > 150){
         starNumber = 2;
     }
-    else{
+    else if(score > 100){
         starNumber = 1;
+    }
+    else{
+        starNumber = 0;
     }
     starAnimationTimer = setInterval(function(){
         starAnimation();
