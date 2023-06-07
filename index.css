@@ -1,0 +1,25 @@
+body {
+    background-image: url('img/bg.webp');
+    background-size: cover;
+}
+
+div {
+    position:absolute;
+    left:50%;
+    top: 20%;
+}
+
+p {
+    background-color: rgb(216, 241, 252);
+    border: 6px solid rgb(176, 208, 236);
+    color: rgb(54, 88, 148);
+    height: 80px;
+    width: 300px;
+    border-radius: 680px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 25px;
+    display: inline-block;
+    margin-right: 40px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
