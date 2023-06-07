@@ -4,11 +4,15 @@ session_start();
 $link = mysqli_connect("localhost","root","","webproject")
             or die("無法開啟MySQL資料庫連接!<br/>");
 
-$memberID = $_SESSION['MemberID'];
+
+$memberID = $_SESSION["MemberID"];
+$sql = "SELECT * FROM player WHERE MemberID='{$memberID}'";
+$result = mysqli_query($link, $sql);
+$row = mysqli_fetch_array($result, MYSQLI_NUM);
+$money = $row[2];
 $itemID = $_POST["itemID"];
 $itemNum = $_POST["itemNum"];
 $totalmoney = $_POST["money"];
-$money = $_SESSION['money'];
 
 $money = $money - $totalmoney;
 

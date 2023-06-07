@@ -87,6 +87,42 @@
     }else{
       $item2num = 0;
     }
+
+    if ( isset($_POST["start"]) ){
+      $use1 = $_POST["item1"];
+      $use2 = $_POST["item2"];
+      
+      $con = mysqli_connect("localhost","root","","webproject");
+      if (empty($con)) {
+          print mysqli_error($con);
+          die("資料庫連接失敗！");
+          exit;
+      }
+  
+      if($use1 == 1){
+        $itemID = 1;
+        $sql = "UPDATE store 
+        SET number = $item1num-1
+        WHERE MemberID = '{$memberID}' 
+        and itemID = '{$itemID}'";
+  
+        $result = mysqli_query($con, $sql);
+        header("Location: game.html");
+      }
+  
+      if($use2 == 1){
+        $itemID = 2;
+        $sql = "UPDATE store 
+        SET number = $item2num-1
+        WHERE MemberID = '{$memberID}' 
+        and itemID = '{$itemID}'";
+  
+        $result = mysqli_query($con, $sql);
+        header("Location: game.html");
+  
+      }
+      header("Location: game.html");
+    }
   
   ?>
 
@@ -185,41 +221,7 @@
 
   <?php
   
-  if ( isset($_POST["start"]) ){
-    $use1 = $_POST["item1"];
-    $use2 = $_POST["item2"];
-    
-    $con = mysqli_connect("localhost","root","","webproject");
-    if (empty($con)) {
-        print mysqli_error($con);
-        die("資料庫連接失敗！");
-        exit;
-    }
-
-    if($use1 == 1){
-      $itemID = 1;
-      $sql = "UPDATE store 
-      SET number = $item1num-1
-      WHERE MemberID = '{$memberID}' 
-      and itemID = '{$itemID}'";
-
-      $result = mysqli_query($con, $sql);
-      header("Location: game.html");
-    }
-
-    if($use2 == 1){
-      $itemID = 2;
-      $sql = "UPDATE store 
-      SET number = $item2num-1
-      WHERE MemberID = '{$memberID}' 
-      and itemID = '{$itemID}'";
-
-      $result = mysqli_query($con, $sql);
-      header("Location: game.html");
-
-    }
-    header("Location: game.html");
-  }
+ 
   ?>
 
   <div id="useItem">
