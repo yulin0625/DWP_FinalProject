@@ -506,6 +506,9 @@ function countDown(){
         document.getElementById("hourglass").style.animationPlayState = "paused";
         clearInterval(newOrder_timer);
         // todo:gameover
+        for(let i=0; i < maxMeatNumber; ++i){
+            clearInterval(meat_timers[i]);
+        }
         showStar();
     }
 }
