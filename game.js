@@ -1,4 +1,4 @@
-var gameTime_s = 1;
+var gameTime_s = 2*60;
 // 盤子
 const maxBurgerNumber = 2
 const burgerStatus = [0, 0]; 
@@ -560,6 +560,4 @@ window.onload = function(){
     newOrder_timer = setInterval(function(){
         generateNewOrder();
     }, 1000);
-    // test
-    score = 260;
 };
