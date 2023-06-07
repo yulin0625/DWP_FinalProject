@@ -87,11 +87,11 @@ function orderListAnimation(orderListID){
             orderList_timeLeft_ms[orderListID-1] -= orderList_animation_period_ms;
             let progressBar = document.getElementById(`orderList_${orderListID}_progressBar`);
             let value = (orderList_timeLeft_ms[orderListID-1]/1000) / orderList_time_s[orderListID-1] * 100;
-            // console.log(value);
             progressBar.style.width = `${value}%`;
         }
         else {
             // clearInterval(orderList_timers[orderListID-1]);
+            score -= 30;
             deleteOrderList(orderListID);
         }
     }
@@ -134,7 +134,6 @@ function finishBurger(plateID){
                 }
                 document.getElementById("score_box").innerHTML = `Score: ${score}`; // 更新score
                 document.getElementById("money_box").innerHTML = `Money: ${money}`; // 更新money
-
             }
         }
     }
@@ -146,6 +145,10 @@ function checkOrderFinish(orderListID){
         // orderListStatus[orderListID-1][0] = orderListStatus[orderListID-1][1] = false;
         orderListStatus.splice(orderListID-1, 1);
         orderList.splice(orderListID-1, 1);
+        orderList_time_s.splice(orderListID-1, 1);
+        orderList_timeLeft_ms.splice(orderListID-1, 1);
+        let orderNumber = orderList.length;
+        clearInterval(orderList_timers[orderNumber]);
     }
     updateOrderList();
 }
@@ -506,8 +509,11 @@ function countDown(){
         document.getElementById("hourglass").style.animationPlayState = "paused";
         clearInterval(newOrder_timer);
         // todo:gameover
-        for(let i=0; i < maxMeatNumber; ++i){
+        for(let i=0; i < meat_timers.length; ++i){
             clearInterval(meat_timers[i]);
+        }
+        for(let i=0; i < orderList_timers.length; ++i){
+            clearInterval(orderList_timers[i]);
         }
         showStar();
     }
