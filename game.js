@@ -92,6 +92,10 @@ function orderListAnimation(orderListID){
         else {
             // clearInterval(orderList_timers[orderListID-1]);
             score -= 30;
+            if(score < 0){
+                score = 0;
+            }
+            document.getElementById("score_box").innerHTML = `Score: ${score}`; // 更新score
             deleteOrderList(orderListID);
         }
     }
