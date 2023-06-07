@@ -64,9 +64,10 @@ function generateNewOrder(){
                 let item1 = Math.floor(Math.random()*7) + 2;
                 let item2 = Math.floor(Math.random()*7) + 2;
                 orderList.push([item1, item2]);
+                orderListStatus.push([false, false]);
             }
             updateOrderList();
-            newOrderTimeLeft = Math.floor(Math.random()*5) + 10;
+            newOrderTimeLeft = Math.floor(Math.random()*5) + 5;
         }
     }
 }
@@ -107,6 +108,7 @@ function finishBurger(plateID){
 function checkOrderFinish(orderListID){
     if(orderListStatus[orderListID-1][0] == true && orderListStatus[orderListID-1][1] == true){
         orderListStatus[orderListID-1][0] = orderListStatus[orderListID-1][1] = false;
+        orderListStatus.splice(orderListID-1, 1);
         orderList.splice(orderListID-1, 1);
     }
     updateOrderList();
