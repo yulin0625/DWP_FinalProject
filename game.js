@@ -69,7 +69,7 @@ function generateNewOrder(){
                 orderListStatus.push([false, false]);
             }
             updateOrderList();
-            newOrderTimeLeft = Math.floor(Math.random()*5) + 5;
+            newOrderTimeLeft = Math.floor(Math.random()*3) + 5;
         }
     }
 }
@@ -538,6 +538,7 @@ function showStar(){
     document.getElementById("finalScore").innerHTML = score;
     document.getElementById("star").style.visibility = "visible";
     document.getElementById("score_input").value = score;
+    document.getElementById("money_input").value = money;
     starCount = 0;
     starNumber = 0;
     if(score > 250){

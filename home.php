@@ -1,6 +1,13 @@
 <?php  
   session_start();
 
+  $link = mysqli_connect("localhost","root","","webproject")or die("無法開啟MySQL資料庫連接!<br/>");;
+  $memberID = $_SESSION["MemberID"];
+  $sql = "SELECT * FROM player WHERE MemberID='{$memberID}'";
+  $result = mysqli_query($link, $sql);
+  $row = mysqli_fetch_array($result, MYSQLI_NUM);
+  $money = $row[2];
+
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +20,8 @@
 </head>
 
 <body>
-  <div id="name_box"><?php echo $_SESSION["MemberID"] ?></div>
-  <div id="m_box">$ <?php echo $_SESSION["money"] ?></div>
+  <div id="name_box"><?php echo $memberID ?></div>
+  <div id="m_box">$ <?php echo $money ?></div>
   <button id="playGameBtn" onclick="playGame()">START!</button>
   <button id="LOGOUT" onclick="location.href='index.html'" >LOG OUT</button>
   <button class="but" id="leaderboard" onclick="openLeaderboard()">RANK</button>
