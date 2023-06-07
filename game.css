@@ -245,7 +245,7 @@ font-family: monospace ;
 .meat_top {
   max-width: 100px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
 }
@@ -253,7 +253,16 @@ font-family: monospace ;
 .meat_bottom {
   max-width: 100px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+}
+
+.statusBar {
+  visibility: hidden;
+  position: absolute;
+  width: 100px;
+  left: 50%;
+  top: 80%;
+  transform: translateY(-50%) translateX(-50%)
 }
