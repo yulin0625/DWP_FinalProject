@@ -24,6 +24,10 @@ const meat_timeLeft_ms = [0, 0, 0, 0];
 const meat_animation_period_ms = 100;
 // 肉熟的時間
 const cookingTime = 6;
+// 肉緩衝時間
+const bufferTime1 = 2; // 肉煮好多久後隱藏 progress bar
+const bufferTime2 = 1; // 隱藏 progress bar多久後肉開始燒焦
+
 // 肉燒焦的時間
 const overcookedTime = 15;
 // 燒焦懲罰分數
@@ -301,7 +305,6 @@ function addIngredient(ingredient){
     }
 }
 
-
 function cookMeat(meatID){
     meat_timeLeft_ms[meatID-1] = cookingTime * 1000;
     meat_timers[meatID-1] = setInterval(function(){
@@ -319,56 +322,67 @@ function cookMeatAnimation(meatID){
         }
         else {
             clearInterval(meat_timers[meatID-1]);
-            setTimeout(function(){
-                meatIsCooked(meatID);   
-            }, 1500);
+            meatIsCooked(meatID);
         }
     }
 }
 
-// function cookMeat(meatID){
-//     switch(meatID){
-//         case 1:
-//             m1_timer = setTimeout(
-//                 function(){meatIsCooked(1);},
-//                 cookingTime * 1000
-//             );
-//             break;
-//         case 2:
-//             m2_timer = setTimeout(
-//                 function(){meatIsCooked(2);},
-//                 cookingTime * 1000
-//             );
-//             break;
-//         case 3:
-//             m3_timer = setTimeout(
-//                 function(){meatIsCooked(3);},
-//                 cookingTime * 1000
-//             );
-//             break;
-//         case 4:
-//             m4_timer = setTimeout(
-//                 function(){meatIsCooked(4);},
-//                 cookingTime * 1000
-//             );
-//             break;
-//     }
-// }
-
 function meatIsCooked(meatID){
     document.getElementById("meat_"+meatID).setAttribute("src", "./img/meat_c.png");
     meatStatus[meatID-1] = 2;
-    // 燒焦計時
+    // 緩衝時間1
+    meat_timeLeft_ms[meatID-1] = bufferTime1*1000;
+    meat_timers[meatID-1] = setInterval(function(){
+        resetProgressBar(meatID);
+    }, 1000);
+}
+
+function resetProgressBar(meatID){
+    if(!gamePause){
+        if(meat_timeLeft_ms[meatID-1] > 0){
+            meat_timeLeft_ms[meatID-1] -= 1000;
+        }
+        else{
+            clearInterval(meat_timers[meatID-1]);
+            // 隱藏進度條
+            document.getElementById(`meat_${meatID}_progress`).style.visibility = "hidden";
+            // 歸零
+            document.getElementById(`meat_${meatID}_progressBar`).style.width = "0%";
+            // 更改 progressBar 顏色
+            document.getElementById(`meat_${meatID}_progressBar`).classList.remove("progress-bar-success");
+            document.getElementById(`meat_${meatID}_progressBar`).classList.add("progress-bar-danger");
+            // 緩衝時間2
+            meat_timeLeft_ms[meatID-1] = bufferTime2*1000;
+            meat_timers[meatID-1] = setInterval(function(){
+                overcookedCountDown(meatID);
+            }, 1000);
+        }
+    }
+}
+
+// 燒焦計時 period=1s
+function overcookedCountDown(meatID){
     if(!use_noOvercook_props){
-        // 歸零
-        document.getElementById(`meat_${meatID}_progressBar`).style.width = "0%";
-        // 更改 progressBar 顏色
-        document.getElementById(`meat_${meatID}_progressBar`).classList.remove("progress-bar-success");
-        document.getElementById(`meat_${meatID}_progressBar`).classList.add("progress-bar-danger");
-        meat_timeLeft_ms[meatID-1] = overcookedTime * 1000;
-        meat_timers[meatID-1] = setInterval(function(){
-            meatOvercookedAnimation(meatID);
-        }, meat_animation_period_ms);
+        if(!gamePause){
+            if(meat_timeLeft_ms[meatID-1] > 0){
+                meat_timeLeft_ms[meatID-1] -= 1000;
+            }
+            else {
+                clearInterval(meat_timers[meatID-1]);
+                // 顯示進度條
+                document.getElementById(`meat_${meatID}_progress`).style.visibility = "visible";
+
+                // // 歸零
+                // document.getElementById(`meat_${meatID}_progressBar`).style.width = "0%";
+                // // 更改 progressBar 顏色
+                // document.getElementById(`meat_${meatID}_progressBar`).classList.remove("progress-bar-success");
+                // document.getElementById(`meat_${meatID}_progressBar`).classList.add("progress-bar-danger");
+                meat_timeLeft_ms[meatID-1] = overcookedTime * 1000;
+                meat_timers[meatID-1] = setInterval(function(){
+                    meatOvercookedAnimation(meatID);
+                }, meat_animation_period_ms);
+            }
+        }
     }
 }
 
