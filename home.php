@@ -220,7 +220,7 @@
     <img onclick=" chooseItem(2)" src="img/item2.png" id="ch_item_2">
     <form name="start"  method="post">
       <input class="invis" name="item1" id="item1input" value=0>
-      <input  id="item2input" class="invis" name="item2"  value=0>
+      <input class="invis" name="item2" id="item2input" value=0>
       <input onclick="startGame()" value="PLAY!" type="submit" id=itemButton name="start" >
     </form>
   </div>

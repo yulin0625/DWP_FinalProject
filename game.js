@@ -1,4 +1,6 @@
-var gameTime_s = 2*60;
+// var gameTime_s = 2*60;
+var gameTime_s = 20;
+
 // 盤子
 const maxBurgerNumber = 2
 const burgerStatus = [0, 0]; 
@@ -535,6 +537,7 @@ function enableAllButton(){
 function showStar(){
     document.getElementById("finalScore").innerHTML = score;
     document.getElementById("star").style.visibility = "visible";
+    document.getElementById("score_input").value = score;
     starCount = 0;
     starNumber = 0;
     if(score > 250){
