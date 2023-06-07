@@ -1,3 +1,4 @@
+var demoMode = true;
 var gameTime_s = 2*60;
 
 // 盤子
@@ -33,6 +34,7 @@ const overcookedTime = 15;
 // 燒焦懲罰分數
 const overcookPunish = 20;
 // 訂單
+var totallistCount = 0;
 const orderListPunish = 30;
 const maxOrderListNumber = 4;
 const orderList = [];
@@ -75,7 +77,13 @@ function generateNewOrder(){
                 }, orderList_animation_period_ms);
             }
             updateOrderList();
-            newOrderTimeLeft = Math.floor(Math.random()*3) + 5;
+            if(totallistCount < 2){
+                newOrderTimeLeft = Math.floor(Math.random()*3) + 8;
+            }
+            else{
+                newOrderTimeLeft = Math.floor(Math.random()*3) + 5;
+            }
+            ++totallistCount;
         }
     }
 }
@@ -592,21 +600,40 @@ function showStar(){
     document.getElementById("money_input").value = money;
     starCount = 0;
     starNumber = 0;
-    if(score > 250){
-        starNumber = 3;
-    }
-    else if(score > 150){
-        starNumber = 2;
-    }
-    else if(score > 100){
-        starNumber = 1;
+    if(!demoMode){
+        if(score > 250){
+            starNumber = 3;
+        }
+        else if(score > 150){
+            starNumber = 2;
+        }
+        else if(score > 100){
+            starNumber = 1;
+        }
+        else{
+            starNumber = 0;
+        }
+        starAnimationTimer = setInterval(function(){
+            starAnimation();
+        }, 1000);
     }
     else{
-        starNumber = 0;
+        if(score > 80){
+            starNumber = 3;
+        }
+        else if(score > 50){
+            starNumber = 2;
+        }
+        else if(score > 20){
+            starNumber = 1;
+        }
+        else{
+            starNumber = 0;
+        }
+        starAnimationTimer = setInterval(function(){
+            starAnimation();
+        }, 1000);
     }
-    starAnimationTimer = setInterval(function(){
-        starAnimation();
-    }, 1000);
 }
 
 function starAnimation(){
@@ -632,12 +659,14 @@ window.onload = function(){
         use_noOvercook_props = true;
         document.getElementById("item2").style.display = "inline-block";
     }
+    if(demoMode){
+        gameTime_s = 1*60;
+    }
     timeLeft = gameTime_s; // 遊戲時間2min
     updateTimeLeft();
     game_timer = setInterval(countDown, 1000);
     updateOrderList();
-    generateNewOrder();
-    newOrderTimeLeft = Math.floor(Math.random()*5) + 2;
+    newOrderTimeLeft = 3;
     newOrder_timer = setInterval(function(){
         generateNewOrder();
     }, 1000);
