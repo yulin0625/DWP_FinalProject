@@ -1,3 +1,4 @@
+var gameTime_s = 1;
 // 盤子
 const maxBurgerNumber = 2
 const burgerStatus = [0, 0]; 
@@ -10,26 +11,24 @@ const burgerStatusToName = ["", "burger", "burger_m",
                             "burger_m_t", "burger_m_l", "burger_m_l_t"];
 const maxMeatNumber = 4;
 const meatStatus = [0, 0, 0, 0]; // 0:no meat, 1:raw, 2:cooked, 3:overcook
+// timer
 var timeLeft;
 var game_timer;
 var newOrder_timer;
 var newOrderTimeLeft = 1;
 
-// var m1_timer;
-// var m2_timer;
-// var m3_timer;
-// var m4_timer;
+// 肉
 const meat_timers = [null, null, null, null];
 const meat_timeLeft_ms = [0, 0, 0, 0];
 const meat_animation_period_ms = 100;
 // 肉熟的時間
 const cookingTime = 6;
 // 肉緩衝時間
-const bufferTime1 = 2; // 肉煮好多久後隱藏 progress bar
-const bufferTime2 = 1; // 隱藏 progress bar多久後肉開始燒焦
-
+const bufferTime1 = 1; // 肉煮好多久後隱藏 progress bar
+const bufferTime2 = 2; // 隱藏 progress bar多久後肉開始燒焦
 // 肉燒焦的時間
 const overcookedTime = 15;
+
 // 燒焦懲罰分數
 const overcookPunish = 20;
 // 訂單
@@ -42,8 +41,10 @@ const orderListStatus = [
     [false, false]
 ];
 
-// ?刪除任意訂單
-// let removed = fruits.splice(1, 1); 
+// 星星結算
+var starAnimationTimer;
+var starCount = 0;
+var starNumber = 0;
 
 // 分數、金幣
 var score = 0;
@@ -401,40 +402,6 @@ function meatOvercookedAnimation(meatID){
     }
 }
 
-// function meatIsCooked(meatID){
-//     document.getElementById("meat_"+meatID).setAttribute("src", "./img/meat_c.png");
-//     meatStatus[meatID-1] = 2;
-//     // 燒焦計時
-//     if(!use_noOvercook_props){
-//         switch(meatID){
-//             case 1:
-//                 m1_timer = setTimeout(
-//                     function(){meatIsOvercooked(1);},
-//                     OvercookedTime * 1000
-//                 );
-//                 break;
-//             case 2:
-//                 m2_timer = setTimeout(
-//                     function(){meatIsOvercooked(2);},
-//                     OvercookedTime * 1000
-//                 );
-//                 break;
-//             case 3:
-//                 m3_timer = setTimeout(
-//                     function(){meatIsOvercooked(3);},
-//                     OvercookedTime * 1000
-//                 );
-//                 break;
-//             case 4:
-//                 m4_timer = setTimeout(
-//                     function(){meatIsOvercooked(4);},
-//                     OvercookedTime * 1000
-//                 );
-//                 break;
-//         }
-//     }
-// }
-
 // 讓肉燒焦
 function meatIsOvercooked(meatID){
     // 燒焦扣分
@@ -474,10 +441,11 @@ function countDown(){
         }
     }
     else{
+        disableAllButton();
         document.getElementById("hourglass").style.animationPlayState = "paused";
         clearInterval(newOrder_timer);
-
         // todo:gameover
+        showStar();
     }
 }
 
@@ -550,8 +518,40 @@ function enableAllButton(){
     document.getElementById("meat_4").setAttribute("ondbclick", "moveMeatToTrash(4)");
 }
 
+function showStar(){
+    document.getElementById("finalScore").innerHTML = score;
+    document.getElementById("star").style.visibility = "visible";
+    starCount = 0;
+    starNumber = 0;
+    if(score > 250){
+        starNumber = 3;
+    }
+    else if(score > 150){
+        starNumber = 2;
+    }
+    else{
+        starNumber = 1;
+    }
+    starAnimationTimer = setInterval(function(){
+        starAnimation();
+    }, 1000);
+}
+
+function starAnimation(){
+    if(starCount <= starNumber){
+        if(starCount > 0){
+            document.getElementById(`star${starCount}`).setAttribute('src', 'img/star1.png');
+        }
+        ++starCount;
+    }
+    else{
+        clearInterval(starAnimationTimer);
+        document.getElementById("gohomeBtn").style.visibility = "visible";
+    }
+}
+
 window.onload = function(){
-    timeLeft = 2*60; // 遊戲時間2min
+    timeLeft = gameTime_s; // 遊戲時間2min
     updateTimeLeft();
     game_timer = setInterval(countDown, 1000);
     updateOrderList();
@@ -560,4 +560,6 @@ window.onload = function(){
     newOrder_timer = setInterval(function(){
         generateNewOrder();
     }, 1000);
+    // test
+    score = 260;
 };
