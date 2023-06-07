@@ -35,12 +35,11 @@ const overcookPunish = 20;
 // 訂單
 const maxOrderListNumber = 4;
 const orderList = [];
-const orderListStatus = [
-    [false, false],
-    [false, false],
-    [false, false],
-    [false, false]
-];
+const orderListStatus = [];
+const orderList_timers = [null, null, null, null];
+const orderList_time_s = [];
+const orderList_timeLeft_ms = [];
+const orderList_animation_period_ms = 100;
 
 // 星星結算
 var starAnimationTimer;
@@ -67,11 +66,46 @@ function generateNewOrder(){
                 let item2 = Math.floor(Math.random()*7) + 2;
                 orderList.push([item1, item2]);
                 orderListStatus.push([false, false]);
+                let orderListID = orderList.length;
+                // orderList_timeLeft_ms[orderListID-1] = (Math.floor(Math.random()*5) + 15)*1000; // todo:待調整參數
+                orderList_timeLeft_ms.push((Math.floor(Math.random()*5) + 15)*1000);
+                // orderList_time_s[orderListID-1] = orderList_timeLeft_ms[orderListID-1] / 1000;
+                orderList_time_s.push(orderList_timeLeft_ms[orderListID-1] / 1000);
+                orderList_timers[orderListID-1] = setInterval(function(){
+                    orderListAnimation(orderListID);
+                }, orderList_animation_period_ms);
             }
             updateOrderList();
             newOrderTimeLeft = Math.floor(Math.random()*3) + 5;
         }
     }
+}
+
+function orderListAnimation(orderListID){
+    if(!gamePause){
+        if(orderList_timeLeft_ms[orderListID-1] > 0){
+            orderList_timeLeft_ms[orderListID-1] -= orderList_animation_period_ms;
+            let progressBar = document.getElementById(`orderList_${orderListID}_progressBar`);
+            let value = (orderList_timeLeft_ms[orderListID-1]/1000) / orderList_time_s[orderListID-1] * 100;
+            // console.log(value);
+            progressBar.style.width = `${value}%`;
+        }
+        else {
+            // clearInterval(orderList_timers[orderListID-1]);
+            deleteOrderList(orderListID);
+        }
+    }
+}
+
+function deleteOrderList(orderListID){
+    orderListStatus.splice(orderListID-1, 1);
+    orderList.splice(orderListID-1, 1);
+    orderList_time_s.splice(orderListID-1, 1);
+    orderList_timeLeft_ms.splice(orderListID-1, 1);
+    updateOrderList();
+    // 刪除多的timer
+    let orderNumber = orderList.length;
+    clearInterval(orderList_timers[orderNumber]);
 }
 
 function finishBurger(plateID){
@@ -109,7 +143,7 @@ function finishBurger(plateID){
 
 function checkOrderFinish(orderListID){
     if(orderListStatus[orderListID-1][0] == true && orderListStatus[orderListID-1][1] == true){
-        orderListStatus[orderListID-1][0] = orderListStatus[orderListID-1][1] = false;
+        // orderListStatus[orderListID-1][0] = orderListStatus[orderListID-1][1] = false;
         orderListStatus.splice(orderListID-1, 1);
         orderList.splice(orderListID-1, 1);
     }
@@ -119,8 +153,12 @@ function checkOrderFinish(orderListID){
 function updateOrderList(){
     let i = 0;
     for(i; i < orderList.length; ++i){
+        // timer
+        document.getElementById(`orderList_${i+1}_progress`).style.visibility = "visible";
+        // setTimeout(function(){
+        //     showProgressBar(orderList.length);
+        // }, 500);
         // item_1
-        // alert(burgerStatusToName[orderList[i][0]]);
         document.getElementById(`orderItem_${i+1}-1`).setAttribute("src", `./img/${burgerStatusToName[orderList[i][0]]}.png`);
         if(orderListStatus[i][0]==true){
             document.getElementById(`check_${i+1}-1`).style.visibility = "visible";
@@ -144,6 +182,13 @@ function updateOrderList(){
         document.getElementById("orderList_"+(i+1)).style.visibility = "hidden";
         document.getElementById(`check_${i+1}-1`).style.visibility = "hidden";
         document.getElementById(`check_${i+1}-2`).style.visibility = "hidden";
+        document.getElementById(`orderList_${i+1}_progress`).style.visibility = "hidden";
+    }
+}
+
+function showProgressBar(orderNumber){
+    for(let i=0; i < orderNumber; ++i){
+        document.getElementById(`orderList_${i+1}_progress`).style.visibility = "visible";
     }
 }
 
