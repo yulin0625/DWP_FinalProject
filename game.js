@@ -1,4 +1,4 @@
-var demoMode = true;
+var demoMode = false;
 var gameTime_s = 2 * 60;
 
 // 盤子
