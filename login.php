@@ -19,22 +19,12 @@
     if (isset($_POST["login"])) {
         $MemberID = $_POST["MemberID"];
         $password = $_POST["password"];
-        $link = mysqli_connect("localhost", "root", "", "webproject") or die("無法開啟MySQL資料庫連接!<br/>");;
-
-        // 檢查是否輸入使用者名稱和密碼
-        // if ($MemberID != "" && $password != "")
-        // {
-        //     // 建立MySQL的資料庫連接 
-        //     $link = mysqli_connect("localhost","root","","webproject")
-
-        // }
+        $link = mysqli_connect("localhost", "root", "", "webproject") or die("無法開啟MySQL資料庫連接!<br/>");
 
         // 送出UTF8編碼的MySQL指令
         mysqli_query($link, 'SET NAMES utf8');
 
         // 建立SQL指令字串
-        // $sql = "SELECT * FROM player WHERE password='";
-        // $sql.= $password."' AND MemberID='".$MemberID."'";
         $sql = "SELECT * FROM player WHERE MemberID='{$MemberID}'";
 
         // 執行SQL查詢
