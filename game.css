@@ -175,7 +175,7 @@ body {
   background-color: rgb(246, 250, 250);
   border-radius: 10px;
   border: 6px solid rgb(202, 202, 202);
-  background-image: url(img/order.jpg!ys);
+  background-image: url(img/order.jpg);
 }
 
 .orderList_progress {
