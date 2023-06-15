@@ -1,67 +1,66 @@
 body {
-    background-image: url(img/bg.png);
-    background-size: cover;
-  }
+  background-image: url(img/bg.png);
+  background-size: cover;
+}
 
-  h1 {
-    top: 20%;
-    left: 25%;
-    text-align: center;
-    width: 100%;
-    margin-top: 0;
-    font-family: monospace;
-  }
+h1 {
+  top: 20%;
+  left: 25%;
+  text-align: center;
+  width: 100%;
+  margin-top: 0;
+  font-family: monospace;
+}
 
-  div {
-    position: absolute;
-    top:20%;
-    left: 20%;
-    font-size: 30px;
-    background-color: rgba(221, 248, 252, 0.853);
-    width: 30%;
-    height: 40%;
-    padding: 5% 15%;
-  }
+div {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  font-size: 30px;
+  background-color: rgba(221, 248, 252, 0.853);
+  width: 30%;
+  height: 40%;
+  padding: 5% 15%;
+}
 
-  .inputtext {
-    height: 30px;
-    width: 200px;
-    border-radius: 20px;
-    border: 2px solid rgb(158, 173, 183);
-    font-size: 18px;
-  }
+.inputtext {
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  border: 2px solid rgb(158, 173, 183);
+  font-size: 18px;
+}
 
-  table{
-    width: 100%;
-    height: 100%;
-    /* background-color: aquamarine; */
-    font-family: monospace;
+table {
+  width: 100%;
+  height: 100%;
+  /* background-color: aquamarine; */
+  font-family: monospace;
+}
 
-  }
+.text_col {
+  text-align: right;
+}
 
-  .text_col {
-    text-align: right;
-  }
+td:nth-child(2) {
+  text-align: center;
+}
 
-  td:nth-child(2) {
-    text-align: center;
-  }
+.but_col {
+  text-align: center;
+  /* background-color: antiquewhite; */
+}
 
-  .but_col {
-    text-align: center;
-    /* background-color: antiquewhite; */
-  }
+#but1 {
+  margin-top: 50px;
+}
 
-  #but1 {
-    margin-top: 50px;
-  }
-
-  .but {
-    margin-top: 10px;
-    height: 50px;
-    font-size: 18px;
-    width: 150px;
-    border-radius: 30px;
-    border:2px solid rgb(87, 123, 128);
-    background-color: rgb(90, 173, 173);
-  }
+.but {
+  margin-top: 10px;
+  height: 50px;
+  font-size: 18px;
+  width: 150px;
+  border-radius: 30px;
+  border: 2px solid rgb(87, 123, 128);
+  background-color: rgb(90, 173, 173);
+}

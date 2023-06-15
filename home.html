@@ -4,71 +4,85 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>HOME</title>
-  <link rel="stylesheet" href="home.css">
-  <script src="home.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HOME</title>
+    <link rel="stylesheet" href="home.css" />
+    <script src="home.js"></script>
+  </head>
 
-<body>
-  <div id="name_box">wendy</div>
-  <div id="m_box">$ 2943</div>
-  <button id="playGameBtn" onclick="playGame()">START!</button>
-  <button id="LOGOUT" onclick="location.href='index.html'" >LOG OUT</button>
-  <button class="but" id="leaderboard" onclick="openLeaderboard()">RANK</button>
-  <button class="but" id="shop" onclick="openShop()">STORE</button>
+  <body>
+    <div id="name_box">wendy</div>
+    <div id="m_box">$ 2943</div>
+    <button id="playGameBtn" onclick="playGame()">START!</button>
+    <button id="LOGOUT" onclick="location.href='index.html'">LOG OUT</button>
+    <button class="but" id="leaderboard" onclick="openLeaderboard()">
+      RANK
+    </button>
+    <button class="but" id="shop" onclick="openShop()">STORE</button>
 
-  <div id="store">
-    <h1>STORE</h1>
-    <div class="item">
-        <img src="img/item1.png">
+    <div id="store">
+      <h1>STORE</h1>
+      <div class="item">
+        <img src="img/item1.png" />
         <span class="itemnum">1</span>
         <h3>Reduce cooking time</h3>
         <h2>$ 500</h2>
         <div class="item_number">
-            <button onclick="changeNum(1)">◀</button>
-            <form method="post">
-                <input id="num1" class="inputnumber" type="text" name="item1" value="1">
-            </form>
-            <button onclick="changeNum(2)">▶</button>
-            <button class="buybut" onclick="buyitem(1)">BUY</button>
+          <button onclick="changeNum(1)">◀</button>
+          <form method="post">
+            <input
+              id="num1"
+              class="inputnumber"
+              type="text"
+              name="item1"
+              value="1"
+            />
+          </form>
+          <button onclick="changeNum(2)">▶</button>
+          <button class="buybut" onclick="buyitem(1)">BUY</button>
         </div>
-    </div>
-    <div class="item">
-        <img src="img/item2.png">
+      </div>
+      <div class="item">
+        <img src="img/item2.png" />
         <span class="itemnum">1</span>
         <h3>Food won't be bured</h3>
         <h2>$ 500</h2>
         <div class="item_number">
-            <button onclick="changeNum(3)">◀</button>
-            <form method="post">
-                <input id="num2" class="inputnumber" type="text" name="item1" value="1">
-            </form>
-            <button onclick="changeNum(4)">▶</button>
-            <button class="buybut" onclick="buyitem(2)">BUY</button>
+          <button onclick="changeNum(3)">◀</button>
+          <form method="post">
+            <input
+              id="num2"
+              class="inputnumber"
+              type="text"
+              name="item1"
+              value="1"
+            />
+          </form>
+          <button onclick="changeNum(4)">▶</button>
+          <button class="buybut" onclick="buyitem(2)">BUY</button>
         </div>
-    </div>
-    <div id="check">
+      </div>
+      <div id="check">
         <p>Total Amount:</p>
         <p>$<span id="check_money"></span></p>
         <button id="ok_but">OK</button> <button id="can_but">CANCEL</button>
+      </div>
     </div>
-  </div>
 
-  <div id="test">
-    <span onclick="closeLeaderboard()">x</span>
-    <h1>Leaderboard</h1>
-    <div class="head">
-      <table>
-        <tr>
-          <th>RANK</th>
-          <th>NAME</th>
-          <th>SCORE</th>
-        </tr>
-      </table>
-    </div>
-<?php
+    <div id="test">
+      <span onclick="closeLeaderboard()">x</span>
+      <h1>Leaderboard</h1>
+      <div class="head">
+        <table>
+          <tr>
+            <th>RANK</th>
+            <th>NAME</th>
+            <th>SCORE</th>
+          </tr>
+        </table>
+      </div>
+      <?php
   $sql = "SELECT *
   FROM score
   ORDER BY MemberID DESC";
@@ -86,40 +100,36 @@
 
   $result = mysqli_query($con, $sql);
   while ($row = mysqli_fetch_array($result)){?>
-    <div class="rank">
-      <table>
-        <tr>
-          <td><?php echo $x ?> </td>
-          <td><?php echo $row['MemberID']; ?> </td>
-          <td><?php echo $row['score']; ?></td>
-        </tr>
-      </table>
-    </div>
-  <?php $x = $x+1;
+      <div class="rank">
+        <table>
+          <tr>
+            <td><?php echo $x ?></td>
+            <td><?php echo $row['MemberID']; ?></td>
+            <td><?php echo $row['score']; ?></td>
+          </tr>
+        </table>
+      </div>
+      <?php $x = $x+1;
   }
   
   while($x<6){?>
-    <div class="empty">
-    </div>
+      <div class="empty"></div>
 
-  <?php
+      <?php
   $x+=1;
   }
   ?>
-    
-  </div>
+    </div>
 
+    <div id="back">
+      <img src="img/back.png" onclick="backToHome()" />
+    </div>
 
-  <div id="back">
-    <img src="img/back.png" onclick="backToHome()">
-  </div>
-
-  <div id="useItem">
-    <h1>Choose item</h1>
-    <img onclick=" chooseItem(1)" src="img/item1.png" id="ch_item_1">
-    <img onclick=" chooseItem(2)" src="img/item2.png" id="ch_item_2">
-    <button onclick="startGame()">PLAY!</button>
-  </div>
-
-</body>
+    <div id="useItem">
+      <h1>Choose item</h1>
+      <img onclick=" chooseItem(1)" src="img/item1.png" id="ch_item_1" />
+      <img onclick=" chooseItem(2)" src="img/item2.png" id="ch_item_2" />
+      <button onclick="startGame()">PLAY!</button>
+    </div>
+  </body>
 </html>

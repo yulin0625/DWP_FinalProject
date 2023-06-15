@@ -42,4 +42,3 @@ if ($link->query($sql) === TRUE) {
 } 
 
 $link->close();
-?>

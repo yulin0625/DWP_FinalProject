@@ -1,502 +1,493 @@
 body {
-    background-image: url(./img/home_background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url(./img/home_background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #playGameBtn {
-    /* 垂直對齊於65% */
-    position: absolute;
-    top: 65%;
-    height: 80px;
-    transform: translateY(-50%);
-    /* 水平置中 */
-    left: 50%;
-    width: 100px;
-    transform: translateX(-50%);
+  /* 垂直對齊於65% */
+  position: absolute;
+  top: 65%;
+  height: 80px;
+  transform: translateY(-50%);
+  /* 水平置中 */
+  left: 50%;
+  width: 100px;
+  transform: translateX(-50%);
 }
 
 #test {
-    background-color: rgb(73, 65, 40);
-    padding: 15px 15px 5px 15px;
-    float: right;
-    position: fixed;
-    top: 80px;
-    right: 15px;
-    width: 510px;
-    border-radius: 20px;
-    text-align: center;
-    display: none;
-    height:485px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
+  background-color: rgb(73, 65, 40);
+  padding: 15px 15px 5px 15px;
+  float: right;
+  position: fixed;
+  top: 80px;
+  right: 15px;
+  width: 510px;
+  border-radius: 20px;
+  text-align: center;
+  display: none;
+  height: 485px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 
-  #test h1 {
-    font-family:fantasy;
-    font-weight: 100;
-    font-size: 40px;
-    color:rgb(244, 235, 222);
-    margin:3px 0 10px 0;
-  }
+#test h1 {
+  font-family: fantasy;
+  font-weight: 100;
+  font-size: 40px;
+  color: rgb(244, 235, 222);
+  margin: 3px 0 10px 0;
+}
 
-  #test button {
-    position: absolute;
-    right:20px;
-    font-size:20px;
-    font-weight:bold;
-    font-family:monospace;
-    height: 25px;
-    width:25px;
-    line-height:19px;
-    border-radius:10px;
-    background-color: gray;
-  }
+#test button {
+  position: absolute;
+  right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: monospace;
+  height: 25px;
+  width: 25px;
+  line-height: 19px;
+  border-radius: 10px;
+  background-color: gray;
+}
 
-  #test span {
-    position: absolute;
-    right:20px;
-    font-size:25px;
-    font-weight:bold;
-    font-family:monospace;
-  }
+#test span {
+  position: absolute;
+  right: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: monospace;
+}
 
-  table {
-    width: 500px;
-    /* background-color: white; */
-    font-size:20px;
-    text-align:center;
-    /* border: 3px solid blue; */
-    border-radius:20px;
-  }
+table {
+  width: 500px;
+  /* background-color: white; */
+  font-size: 20px;
+  text-align: center;
+  /* border: 3px solid blue; */
+  border-radius: 20px;
+}
 
-  tr {
-    height: 40px;
-  }
+tr {
+  height: 40px;
+}
 
-  th:first-child , td:first-child {
-    width:100px;
-  }
-  
-  th:nth-child(2) , td:nth-child(2) {
-    width:200px;
-  }
+th:first-child,
+td:first-child {
+  width: 100px;
+}
 
-  .rank {
-    height:50px;
-    width: 500px;
-    border-radius: 15px;
-    background-color: rgb(230, 230, 230);
-    color:rgb(80, 71, 55);
-    margin-bottom: 10px;
-    font-family:monospace ;
-  }
+th:nth-child(2),
+td:nth-child(2) {
+  width: 200px;
+}
 
-  .rank:hover {
-    background-color: rgb(229, 217, 182);
-    width: 510px;
-    margin-left: -10px;
-    padding-left:10px;
-    font-size:100px;
-    color:rgb(54, 52, 48);
+.rank {
+  height: 50px;
+  width: 500px;
+  border-radius: 15px;
+  background-color: rgb(230, 230, 230);
+  color: rgb(80, 71, 55);
+  margin-bottom: 10px;
+  font-family: monospace;
+}
 
-    font-weight: bold;
-    transition:200ms;
-  }
+.rank:hover {
+  background-color: rgb(229, 217, 182);
+  width: 510px;
+  margin-left: -10px;
+  padding-left: 10px;
+  font-size: 100px;
+  color: rgb(54, 52, 48);
 
+  font-weight: bold;
+  transition: 200ms;
+}
 
-  .head{
-    height:50px;
-    width: 500px;
-    border-radius: 15px;
-    margin-bottom: 10px;
-    font-family:monospace ;
-    background-color: rgb(230, 166, 102);
-  }
+.head {
+  height: 50px;
+  width: 500px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  font-family: monospace;
+  background-color: rgb(230, 166, 102);
+}
 
-  .empty {
-    background-color: gray;
-    height:50px;
-    width: 500px;
-    border-radius: 15px;
-    margin-bottom: 10px;
-    font-family:monospace ;
-  }
+.empty {
+  background-color: gray;
+  height: 50px;
+  width: 500px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  font-family: monospace;
+}
 
-  #name_box {
-      background-color:rgb(65, 94, 128);
-      width: 200px;
-      height: 50px;
-      border-radius: 50px;
-      line-height: 50px;
-      text-align: center;
-      border: 5px solid rgb(201, 210, 226);
-      color: aliceblue;
-      /* font-weight: bold; */
-      font-size: 23px;
-      display: inline-block;
-      margin-right: 10px;
-      font-family:fantasy ;
-      margin:10px 20px;
-  }
+#name_box {
+  background-color: rgb(65, 94, 128);
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 5px solid rgb(201, 210, 226);
+  color: aliceblue;
+  /* font-weight: bold; */
+  font-size: 23px;
+  display: inline-block;
+  margin-right: 10px;
+  font-family: fantasy;
+  margin: 10px 20px;
+}
 
-  #m_box {
-      background-color:rgb(65, 94, 128);
-      width: 200px;
-      height: 50px;
-      border-radius: 50px;
-      line-height: 50px;
-      text-align: center;
-      color: aliceblue;
-      border: 5px solid rgb(196, 204, 219);
-      /* font-weight: bold; */
-      font-size: 23px;
-      display: inline-block;
-     font-family:fantasy;
+#m_box {
+  background-color: rgb(65, 94, 128);
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: aliceblue;
+  border: 5px solid rgb(196, 204, 219);
+  /* font-weight: bold; */
+  font-size: 23px;
+  display: inline-block;
+  font-family: fantasy;
+}
 
-  }
+.but {
+  float: right;
+  background-color: rgb(240, 224, 181);
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  line-height: 30px;
+  text-align: center;
+  color: rgb(91, 65, 13);
+  border: 5px solid rgb(101, 86, 66);
+  font-weight: bold;
+  font-size: 23px;
+  margin-right: 10px;
+  font-family: monospace;
+}
 
-  .but {
-      float: right;
-      background-color:rgb(240, 224, 181);
-      width: 200px;
-      height: 50px;
-      border-radius: 50px;
-      line-height: 30px;
-      text-align: center;
-      color: rgb(91, 65, 13);
-      border: 5px solid rgb(101, 86, 66);
-      font-weight: bold;
-      font-size: 23px;
-      margin-right: 10px;
-      font-family:monospace ;
-  }
+.but:hover {
+  border: 5px solid rgb(196, 188, 179);
+  background-color: rgb(111, 92, 76);
+  color: rgb(201, 197, 190);
+}
 
-  .but:hover {
-    border: 5px solid rgb(196, 188, 179);
-    background-color:rgb(111, 92, 76);
-    color:rgb(201, 197, 190)
-  }
+.but:active {
+  width: 180px;
+  height: 46px;
+  margin: 4px 20px 0 10px;
+  line-height: 35px;
+  font-size: 20px;
+}
 
-  .but:active {
-      width: 180px;
-      height: 46px;
-      margin:4px 20px 0 10px;
-      line-height:35px;
-      font-size:20px;
-  }
+#playGameBtn {
+  float: right;
+  background-color: rgb(128, 17, 17);
+  width: 300px;
+  height: 90px;
+  border-radius: 50px;
+  line-height: 30px;
+  text-align: center;
+  color: rgb(240, 228, 223);
+  border: 7px solid rgb(72, 22, 22);
+  font-weight: bold;
+  font-size: 40px;
+  font-family: monospace;
+}
 
-  #playGameBtn {
-      float: right;
-      background-color:rgb(128, 17, 17);
-      width: 300px;
-      height: 90px;
-      border-radius: 50px;
-      line-height: 30px;
-      text-align: center;
-      color: rgb(240, 228, 223);
-      border: 7px solid rgb(72, 22, 22);
-      font-weight: bold;
-      font-size: 40px;
-      font-family:monospace ;
-  }
+#playGameBtn:hover {
+  width: 300px;
+  height: 90px;
+  font-size: 40px;
+  background-color: rgb(230, 145, 109);
+  color: rgb(103, 38, 6);
+  border-color: rgb(100, 39, 8);
+}
 
-  #playGameBtn:hover{
-    width: 300px;
-    height: 90px;
-    font-size: 40px;
-    background-color:rgb(230, 145, 109);
-    color: rgb(103, 38, 6);
-    border-color: rgb(100, 39, 8);
-  }
+#playGameBtn:active {
+  width: 290px;
+  height: 85px;
+  font-size: 38px;
+  margin-top: 3px;
+  /* transition: 2000 ms; */
+}
 
-  #playGameBtn:active{
-    width: 290px;
-    height: 85px;
-    font-size: 38px;
-    margin-top: 3px ;
-    /* transition: 2000 ms; */
-  }
+#LOGOUT {
+  float: right;
+  background-color: rgb(211, 227, 241);
+  width: 130px;
+  height: 50px;
+  border-radius: 50px;
+  line-height: 30px;
+  text-align: center;
+  color: rgb(21, 39, 54);
+  border: 5px solid rgb(90, 121, 148);
+  font-weight: bold;
+  font-size: 23px;
+  margin-right: 10px;
+  font-family: monospace;
+}
 
-  #LOGOUT {
-    float: right;
-    background-color:rgb(211, 227, 241);
-    width: 130px;
-    height: 50px;
-    border-radius: 50px;
-    line-height: 30px;
-    text-align: center;
-    color: rgb(21, 39, 54);
-    border: 5px solid rgb(90, 121, 148);
-    font-weight: bold;
-    font-size: 23px;
-    margin-right: 10px;
-    font-family:monospace ;
-  }
+#LOGOUT:hover {
+  border: 5px solid rgb(179, 191, 196);
+  background-color: rgb(76, 88, 111);
+  color: aliceblue;
+}
 
-  #LOGOUT:hover {
-      border: 5px solid rgb(179, 191, 196);
-      background-color:rgb(76, 88, 111);
-      color: aliceblue;
-  }
+#LOGOUT:active {
+  width: 120px;
+  height: 47px;
+  margin: 2px 15px 0 5px;
+  line-height: 35px;
+  font-size: 20px;
+}
 
-  #LOGOUT:active {
-      width: 120px;
-      height: 47px;
-      margin:2px 15px 0 5px;
-      line-height:35px;
-      font-size: 20px;
-  }
+#store {
+  height: 540px;
+  width: 35%;
+  background-color: rgb(144, 107, 60);
+  position: absolute;
+  left: 30px;
+  top: 90px;
+  border: 6px solid rgb(252, 224, 140);
+  border-radius: 20px;
+  /* display: none; */
+}
+#store h1 {
+  text-align: center;
+  font-size: 40px;
+  height: 50px;
+  line-height: 50px;
+  margin: 15px 0;
+  color: rgb(255, 249, 240);
+  font-family: fantasy;
+  font-weight: 100;
+}
+#store img {
+  height: 150px;
+  background-color: aliceblue;
+  border-radius: 30px;
+  margin: 30px;
+  position: absolute;
+}
+.item {
+  height: 210px;
+  background-color: rgb(176, 158, 135);
+  margin-bottom: 20px;
+}
+.item h3 {
+  position: absolute;
+  left: 210px;
+  font-size: 25px;
+  margin-top: 40px;
+  font-family: monospace;
+}
 
-  
-  #store {
-      height: 540px;
-      width: 35%;
-      background-color: rgb(144, 107, 60);
-      position: absolute;
-      left: 30px;
-      top:90px;
-      border: 6px solid rgb(252, 224, 140);
-      border-radius: 20px;
-      /* display: none; */
-  }
-  #store h1 {
-      text-align: center;
-      font-size: 40px;
-      height: 50px;
-      line-height: 50px;
-      margin: 15px 0;
-      color: rgb(255, 249, 240);
-     font-family:fantasy;
-    font-weight: 100;
+.item h2 {
+  position: absolute;
+  left: 210px;
+  font-size: 30px;
+  margin-top: 85px;
+  /* font-family:monospace; */
+}
 
+.itemnum {
+  position: absolute;
+  background-color: rgb(207, 34, 4);
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: monospace;
+  line-height: 35px;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
 
-  }
-  #store img{
-      height: 150px;
-      background-color: aliceblue;
-      border-radius: 30px;
-      margin: 30px;
-      position: absolute;
-  }
-  .item {
-      height:210px;
-      background-color: rgb(176, 158, 135);
-      margin-bottom: 20px;
-  }
-  .item h3{
-      position: absolute;
-      left: 210px;
-      font-size: 25px;
-      margin-top: 40px;
-     font-family:monospace;
+.inputnumber {
+  width: 30px;
+}
 
-  }
+.item_number {
+  position: absolute;
+  left: 210px;
+  font-size: 30px;
+  margin-top: 130px;
+}
 
-  .item h2{
-      position: absolute;
-      left: 210px;
-      font-size: 30px;
-      margin-top: 85px;
-     /* font-family:monospace; */
+.item_number form {
+  display: inline-block;
+}
 
-    }
-    
-    .itemnum {
-      position: absolute;
-      background-color: rgb(207, 34, 4);
-      width: 35px;
-      height: 35px;
-      border-radius: 30px;
-      text-align: center;
-      color: rgb(255, 255, 255);
-      font-family:monospace ;
-      line-height: 35px;
-      font-size: 20px;
-      margin-top: 20px;
-      margin-left: 20px;
-    }
+.item_number button {
+  height: 30px;
+}
 
-    .inputnumber{
-        width: 30px;
-    }
-    
-    .item_number {
-        position: absolute;
-        left: 210px;
-        font-size: 30px;
-        margin-top: 130px;
-    }
-    
-  .item_number form {
-      display: inline-block;
-  }
+.item_number input {
+  height: 24px;
+}
 
-  .item_number button {
-      height:30px;
-  }
+.item_number input {
+  height: 24px;
+}
 
-  .item_number input {
-      height:24px;
-  }
+.buybut {
+  background-color: rgb(247, 95, 57);
+  width: 100px;
+  margin-left: 20px;
+  font-family: monospace;
+  font-weight: bold;
+}
 
-  .item_number input {
-      height:24px;
-  }
+#store #close_but {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: monospace;
+  height: 25px;
+  width: 25px;
+  line-height: 19px;
+  border-radius: 10px;
+  background-color: gray;
+}
 
-  .buybut {
-      background-color: rgb(247, 95, 57);
-      width: 100px;
-      margin-left: 20px;
-      font-family:monospace ;
-      font-weight: bold;
-  }
+#noMoney {
+  position: absolute;
+  background-color: rgb(236, 220, 214);
+  border: 7px solid rgb(104, 73, 73);
+  height: 140px;
+  width: 300px;
+  border-radius: 20px;
+  text-align: center;
+  top: 180px;
+  left: 100px;
+  display: none;
+}
 
-  #store #close_but {
-    position: absolute;
-    right:10px;
-    top:10px;
-    font-size:20px;
-    font-weight:bold;
-    font-family:monospace;
-    height: 25px;
-    width:25px;
-    line-height:19px;
-    border-radius:10px;
-    background-color: gray;
-  }
+#noMoney p {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  #noMoney {
-    position: absolute;
-    background-color: rgb(236, 220, 214);
-    border: 7px solid rgb(104, 73, 73);
-    height:140px;
-    width: 300px;
-    border-radius: 20px;
-    text-align: center;
-    top:180px;
-    left: 100px;
-    display: none;
-  }
+#noMoney button {
+  font-size: 18px;
+  background-color: rgb(218, 153, 127);
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  font-family: monospace;
+}
 
-  #noMoney p {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  #noMoney button{
-    font-size: 18px;
-    background-color: rgb(218, 153, 127);
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    font-family:monospace;
-  }
+#check {
+  position: absolute;
+  background-color: rgb(245, 242, 233);
+  border: 7px solid rgb(119, 129, 131);
+  height: 200px;
+  width: 300px;
+  border-radius: 20px;
+  text-align: center;
+  top: 160px;
+  left: 100px;
+  display: none;
+}
 
-  #check {
-    position: absolute;
-    background-color: rgb(245, 242, 233);
-    border: 7px solid rgb(119, 129, 131);
-    height:200px;
-    width: 300px;
-    border-radius: 20px;
-    text-align: center;
-    top:160px;
-    left: 100px;
-    display: none;
-  }
+#check p {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
 
-  #check p{
-    font-weight: bold;
-    font-size: 25px;
-    margin-bottom: 10px;
-  }
+#check button {
+  width: 100px;
+  height: 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  font-family: monospace;
+}
 
-  #check button {
-    width: 100px;
-    height: 30px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 16px;
-    color: rgb(255, 255, 255);
-    font-family:monospace;
+#ok_but {
+  background-color: rgb(105, 170, 105);
+}
 
-  }
+#can_but {
+  background-color: rgb(170, 109, 105);
+}
 
-  #ok_but {
-    background-color: rgb(105, 170, 105);
-  }
+#check form {
+  display: inline-block;
+}
 
-  #can_but {
-    background-color: rgb(170, 109, 105);
-  }
+#check form p {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
 
-  #check form {
-    display: inline-block;
-  }
+#check input {
+  width: 80px;
+  height: 25px;
+  font-size: 20px;
+  font-family: monospace;
+}
 
-  #check form p{
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
+.invis {
+  display: none;
+}
 
-  #check input {
-    width:80px;
-    height:25px;
-    font-size: 20px;
-    font-family:monospace;
+#back {
+  display: none;
+}
 
-  }
+#back img {
+  height: 100px;
+}
 
-  .invis{
-    display: none;
-  }
+#useItem {
+  background-color: antiquewhite;
+  text-align: center;
+  height: 400px;
+  width: 50%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  border: 7px solid rgb(175, 124, 76);
+  border-radius: 20px;
+  display: none;
+}
 
-  #back {
-    display: none;
+#useItem h1 {
+  margin-top: 30px;
+  font-size: 40px;
+  font-family: fantasy;
+}
 
-  }
-
-  #back img {
-    height: 100px;
-  }
-
-  #useItem {
-    background-color: antiquewhite;
-    text-align: center;
-    height:400px;
-    width: 50%;
-    position: absolute;
-    top:20%;
-    left: 25%;
-    border: 7px solid rgb(175, 124, 76);
-    border-radius: 20px;
-    display: none;
-  }
-
-  #useItem h1 {
-    margin-top: 30px;
-    font-size: 40px;
-    font-family:fantasy;
-  }
-
-  #useItem img{
-    height: 150px;
-    background-color: aliceblue;
-    border-radius: 30px;
-    margin: 20px;
-    border: 5px solid rgb(152, 170, 189);
-    
+#useItem img {
+  height: 150px;
+  background-color: aliceblue;
+  border-radius: 30px;
+  margin: 20px;
+  border: 5px solid rgb(152, 170, 189);
 }
 
 #itemButton {
   position: absolute;
   display: block;
   margin: 0;
-  width:200px;
-  height:50px;
+  width: 200px;
+  height: 50px;
   left: 50%;
   margin-top: 30px;
   -ms-transform: translate(-50%, -50%);
@@ -506,12 +497,12 @@ body {
   color: rgb(255, 246, 246);
   font-size: 25px;
   font-weight: bold;
-  font-family:monospace;
+  font-family: monospace;
   border: 4px solid rgb(116, 37, 18);
 }
 
 #itemButton:active {
-  width:195px;
-  height:48px;
+  width: 195px;
+  height: 48px;
   font-size: 24px;
 }

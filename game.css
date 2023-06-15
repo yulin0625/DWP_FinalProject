@@ -1,31 +1,14 @@
 body {
   width: 100%;
-	height: 100%;
+  height: 100%;
   margin: 0;
   background-image: url(./img/home_background.jpg);
   background-size: cover;
 }
 
 #score_box {
-margin: 8px 8px;
-background-color:rgb(65, 94, 128);
-width: 200px;
-height: 50px;
-border-radius: 50px;
-line-height: 40px;
-text-align: center;
-border: 5px solid rgb(201, 210, 226);
-color: aliceblue;
-font-weight: bold;
-font-size: 23px;
-display: inline-block;
-margin-right: 10px;
-font-family: monospace ;
-}
-
-#money_box {
   margin: 8px 8px;
-  background-color:rgb(65, 94, 128);
+  background-color: rgb(65, 94, 128);
   width: 200px;
   height: 50px;
   border-radius: 50px;
@@ -37,13 +20,30 @@ font-family: monospace ;
   font-size: 23px;
   display: inline-block;
   margin-right: 10px;
-  font-family: monospace ;
-  }
+  font-family: monospace;
+}
+
+#money_box {
+  margin: 8px 8px;
+  background-color: rgb(65, 94, 128);
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  line-height: 40px;
+  text-align: center;
+  border: 5px solid rgb(201, 210, 226);
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 23px;
+  display: inline-block;
+  margin-right: 10px;
+  font-family: monospace;
+}
 
 /* 頂部控制列 */
 #pause_btn {
-	float: right;
-	margin: 8px 8px;
+  float: right;
+  margin: 8px 8px;
 }
 
 #pause_btn img {
@@ -53,7 +53,7 @@ font-family: monospace ;
 
 #countDown {
   position: absolute;
-	top: 0;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgb(64, 100, 162);
@@ -82,33 +82,32 @@ font-family: monospace ;
 }
 
 @keyframes rotate {
-    0% {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) rotate(0deg);
-    }
-    25% {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) rotate(90deg);
-    }
-    50% {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) rotate(180deg);
-    }
-    75% {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) rotate(270deg);
-    }
-    100% {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) rotate(360deg);
-    }
+  0% {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+  }
+  25% {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+  }
+  50% {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+  }
+  75% {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg);
+  }
+  100% {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(360deg);
+  }
 }
-
 
 /* 道具 */
 #itemArea {
@@ -141,39 +140,39 @@ font-family: monospace ;
 
 /* 訂單 */
 #orderArea {
-	position: absolute;
-	width: 100%;
-	height: 220px;
-	top: 100px;
+  position: absolute;
+  width: 100%;
+  height: 220px;
+  top: 100px;
 }
 
 .orderList {
-	padding: 0px 15px;
-	height: 100%;
+  padding: 0px 15px;
+  height: 100%;
 }
 
-.item_1 img{
-	width: 110px;
-	position: absolute;
-	top: 25%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
+.item_1 img {
+  width: 110px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
-.item_2 img{
-	width: 110px;
-	position: absolute;
-	top: 75%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
+.item_2 img {
+  width: 110px;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 #orderList_1 {
-	position: absolute;
-	width: 200px;
-	height: 240px;
-	left: 50px;
-	background-color: rgb(246, 250, 250);
+  position: absolute;
+  width: 200px;
+  height: 240px;
+  left: 50px;
+  background-color: rgb(246, 250, 250);
   border-radius: 10px;
   border: 6px solid rgb(202, 202, 202);
   background-image: url(img/order.jpg!ys);
@@ -187,35 +186,33 @@ font-family: monospace ;
 }
 
 #orderList_2 {
-	position: absolute;
-	width: 200px;
-	height: 240px;
-	left: 350px;
-	background-color: rgb(246, 250, 250);
+  position: absolute;
+  width: 200px;
+  height: 240px;
+  left: 350px;
+  background-color: rgb(246, 250, 250);
   border-radius: 10px;
   border: 6px solid rgb(202, 202, 202);
   background-image: url(img/order3.png);
-
 }
 
 #orderList_3 {
-	position: absolute;
-	width: 200px;
-	height: 240px;
-	left: 650px;
-	background-color: rgb(246, 250, 250);
+  position: absolute;
+  width: 200px;
+  height: 240px;
+  left: 650px;
+  background-color: rgb(246, 250, 250);
   border-radius: 10px;
   border: 6px solid rgb(202, 202, 202);
   background-image: url(img/order.jpg!ys);
-
 }
 
 #orderList_4 {
-	position: absolute;
-	width: 200px;
-	height: 240px;
-	left: 950px;
-	background-color: rgb(246, 250, 250);
+  position: absolute;
+  width: 200px;
+  height: 240px;
+  left: 950px;
+  background-color: rgb(246, 250, 250);
   border-radius: 10px;
   border: 6px solid rgb(202, 202, 202);
   background-image: url(img/order3.png);
@@ -253,7 +250,7 @@ font-family: monospace ;
   width: 130px;
   height: 100%;
   position: absolute;
-  left:3%;
+  left: 3%;
   /* background-color: rgb(225, 0, 255); */
 }
 
@@ -261,7 +258,7 @@ font-family: monospace ;
   width: 130px;
   height: 100%;
   position: absolute;
-  left:16%;
+  left: 16%;
   /* background-color: aqua; */
 }
 
@@ -269,9 +266,8 @@ font-family: monospace ;
   width: 500px;
   height: 100%;
   position: absolute;
-  left:30%;
+  left: 30%;
   /* background-color: rgb(188, 212, 192); */
-
 }
 
 .plate {
@@ -297,7 +293,6 @@ font-family: monospace ;
   width: 220px;
   position: absolute;
   right: 40px;
-
 }
 
 #hamburgerBun,
@@ -354,12 +349,12 @@ font-family: monospace ;
   width: 100px;
   left: 50%;
   top: 80%;
-  transform: translateY(-50%) translateX(-50%)
+  transform: translateY(-50%) translateX(-50%);
 }
 
 #star {
   visibility: hidden;
-  top:100px;
+  top: 100px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -373,7 +368,7 @@ font-family: monospace ;
 
 #star h1 {
   font-size: 50px;
-  font-family:fantasy;
+  font-family: fantasy;
   margin-top: 30px;
   margin-bottom: 20px;
   font-weight: 200;
@@ -381,7 +376,7 @@ font-family: monospace ;
 
 #star h2 {
   font-size: 45px;
-  font-family:fantasy;
+  font-family: fantasy;
   margin: 5px;
   margin-bottom: 20px;
 }
@@ -393,7 +388,7 @@ font-family: monospace ;
 
 #gohomeBtn {
   visibility: hidden;
-  position: absolute;   
+  position: absolute;
   display: block;
   left: 50%;
   margin-top: 50px;
@@ -409,6 +404,6 @@ font-family: monospace ;
   color: aliceblue;
 }
 
-.invis{
+.invis {
   display: none;
 }
